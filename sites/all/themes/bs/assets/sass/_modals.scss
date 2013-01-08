@@ -1,0 +1,82 @@
+// Admin
+// ----------------
+
+.ui-dialog{
+	// height:100% !important;
+	// width:100% !important;
+	// top: 0 !important;
+	// left: 0 !important;
+	// background: transparent !important;
+	// border: none !important;
+	// position:static !important;
+	border: none !important;
+	background: transparent !important;
+}
+
+#views-ajax-popup{
+	@extend .modal;
+	bottom: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: auto !important;
+}
+
+.ui-widget-header{
+	background:none !important;
+	border: none !important;
+}
+
+.views-ui-dialog #views-ajax-title, .views-ui-dialog .views-override{
+	background: none !important;
+}
+
+.views-ui-dialog .views-override{
+	position:absolute;
+	right:30px;
+	top:15px;
+}
+
+#views-filterable-options-controls{
+	padding-top:0;
+}
+
+.views-ui-dialog .scroll{
+	border: none !important;
+}
+
+.views-ui-dialog #views-ajax-title{
+	@extend .modal-header;
+	background:#fff !important;
+}
+
+.views-ui-dialog .form-buttons{
+	@extend .modal-footer;
+}
+
+.views-ui-dialog .ui-dialog-titlebar-close{
+	@include box-shadow(none);
+	right: -25px;
+	background:none;
+	border:none;
+	right:5px;
+	top:15px;
+	z-index: 1100;
+}
+
+.views-ui-dialog .ui-dialog-titlebar-close span{
+	@extend .icon-remove;
+	display:block;
+	text-indend: -100px;
+	overflow:hidden;
+}
+
+#views-ajax-body form{
+	margin:0;
+}
+
+#views-display-menu-tabs{
+	margin:0;
+}

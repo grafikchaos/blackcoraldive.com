@@ -1,0 +1,53 @@
+.container {
+  padding-top: 40px;
+}
+
+#header {
+  min-height: 110px;
+}
+#logo {
+  float: left;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+
+#name-and-slogan {
+  float: left;
+  margin-bottom: 30px;
+  margin-left: 15px;
+  margin-right: 0;
+  margin-top: 0;
+  padding-top: 24px;
+}
+
+#site-name {
+  color: #686868;
+  font-size: 1.821em;
+  line-height: 1;
+}
+
+h1#site-name {
+  margin-bottom: 0px;
+}
+
+#site-slogan {
+  font-size: 0.929em;
+  font-style: italic;
+  margin-top: 3px;
+  word-spacing: 0.1em;
+}
+
+.node {
+  margin-bottom: 20px;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

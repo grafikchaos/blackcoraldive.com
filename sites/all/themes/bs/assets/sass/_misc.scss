@@ -1,0 +1,33 @@
+// Progress bar
+// ----------------
+.progress .bar{
+	border:none;
+	margin:0;
+}
+
+// Misc
+// ----------------
+
+.accordion-toggle{
+  outline: 0;
+}
+
+.well .well{
+	@extend .well-small;
+	background-color: darken(#f5f5f5, 5%);
+}
+
+.well .accordion-group{
+	background-color: darken(#f5f5f5, 5%);
+	border-color: darken(#E5E5E5, 5%);
+	.accordion-inner{
+		border-color: darken(#E5E5E5, 5%);
+	}
+	.accordion-group{
+		background-color: lighten(#E8E8E8, 5%);
+		border-color: darken(#E8E8E8, 5%);
+		.accordion-inner{
+			border-color: #E5E5E5;
+		}
+	}
+}

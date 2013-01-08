@@ -1,0 +1,599 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function bs_toolbar_menu() {
+  $items = array();
+  $items['admin/config/system/toolbar'] = array(
+    'title' => 'Bootstrap Toolbar',
+    'description' => t('Settings for Twitter Bootstrap toolbar.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('bs_toolbar_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'bs_toolbar.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function bs_toolbar_permission() {
+  return array(
+    'bs access toolbar' => array(
+      'title' => t('Use the Bootstrap administration toolbar'),
+    ),
+  );
+}
+
+/**
+ *  Show toolbar access check
+ */
+function bs_toolbar_access_check(){
+  if(!user_access('bs access toolbar')) return FALSE;
+  // Toolbar set to only show on admin theme
+  if(variable_get('bs_toolbar_admin_only', FALSE)){
+    global $theme;
+    if ($theme !== variable_get('admin_theme', $theme)) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}
+
+/**
+ * Implements hook_page_build().
+ *
+ * Add admin toolbar to the page_top region automatically.
+ */
+function bs_toolbar_page_build(&$page) {
+  $page['page_top']['content'] = array();
+  $actions = bs_toolbar_action_links();
+  $page['page_top']['bs_toolbar'] = array(
+    '#access' => bs_toolbar_access_check(),
+    'toolbar_drawer' => array(),
+    'toolbar_actions' => !empty($actions) ? $actions : array(),
+    'attributes' => array(),
+  );
+  if(module_exists('toolbar')){
+    $page['page_top']['bs_toolbar']['#pre_render'][] = 'shortcut_toolbar_pre_render';
+  }
+  $page['page_top']['bs_toolbar']['#pre_render'][] = 'bs_toolbar_pre_render';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function bs_toolbar_theme($existing, $type, $theme, $path) {
+  $items['bs_toolbar'] = array(
+    'render element' => 'bs_toolbar',
+    'template' => 'bs_toolbar',
+    'path' => drupal_get_path('module', 'bs_toolbar'),
+  );
+  $items['bs_toolbar_toolbar'] = array(
+    'render element' => 'tree',
+    'preprocess functions' => array('template_preprocess_bs_toolbar_menu_tree'),
+  );
+  $items['bs_toolbar_drawer'] = array(
+    'render element' => 'tree',
+    'preprocess functions' => array('template_preprocess_bs_toolbar_menu_tree'),
+  );
+  $items['bs_toolbar_child'] = array(
+    'render element' => 'tree',
+    'preprocess functions' => array('template_preprocess_bs_toolbar_menu_tree'),
+  );
+  $items['bs_toolbar_child'] = array(
+    'render element' => 'tree',
+    'preprocess functions' => array('template_preprocess_bs_toolbar_menu_tree'),
+  );
+  $items['bs_toolbar_menu_link'] = array(
+    'render element' => 'element',
+  );
+  $items['bs_toolbar_menu_local_tasks'] = array(
+    'variables' => array('primary' => array(), 'secondary' => array()),
+  );
+  $items['bs_toolbar_menu_local_task'] = array(
+    'render element' => 'element',
+  );
+  return $items;
+}
+
+/**
+ * Prerender function for the toolbar.
+ *
+ * Since building the toolbar takes some time, it is done just prior to
+ * rendering to ensure that it is built only if it will be displayed.
+ */
+function bs_toolbar_pre_render($bs_toolbar) {
+  $bs_toolbar = array_merge($bs_toolbar, bs_toolbar_view());
+
+  // Grab shortcuts if toolbar module isn't enabled
+  if(!module_exists('toolbar') && module_exists('shortcut')) $bs_toolbar = shortcut_toolbar_pre_render($bs_toolbar);
+
+  // Don't continue if we don't have a toolbar
+  if(!isset($bs_toolbar['toolbar_drawer'][0])) return $bs_toolbar;
+
+  $drawer = &$bs_toolbar['toolbar_drawer'][0];
+
+  // Make some adjustments to the shortcuts
+  if(!empty($drawer['shortcuts'])){
+    $shortcuts = &$drawer['shortcuts'];
+    $shortcuts['#theme_wrappers'][0] = 'bs_toolbar_drawer';
+    unset($shortcuts['#prefix'], $shortcuts['#suffix']);
+
+    // Place shortcut manage link as a child
+    if(!empty($drawer['configure'])){
+      $configure = $drawer['configure'];
+      //$configure['#options']['attributes']['class'][] = 'btn btn-mini btn-inverse pull-right';
+      $configure['#title'] = '<i class="icon-share"></i> '.$configure['#title'];
+      $configure['#options']['html'] = TRUE;
+      $configure['#original_link'] = $configure;
+      $configure['#localized_options'] = $configure['#options'];
+      $configure['#theme'] = 'bs_toolbar_menu_link';
+      $configure['#attributes'] = array();
+      $configure['#below'] = array();
+      $configure['#prefix'] = '<li class="divider"></li>';
+      unset($drawer['configure'], $configure['#type'], $configure['#options']);
+      $shortcuts['configure'] = $configure;
+    }
+    $hide = '';
+    foreach(variable_get('bs_toolbar_sidebar_hidden', array()) as $hidden){
+      if(!empty($hidden)){
+        $bs_toolbar['attributes']['class'][] = 'has-hidden';
+        break;
+      }
+    }
+  }
+
+  return $bs_toolbar;
+}
+
+/**
+ * Implements hook_preprocess_html().
+ *
+ * Add some page classes, so global page theming can adjust to the toolbar.
+ */
+function bs_toolbar_preprocess_html(&$vars) {
+  if (isset($vars['page']['page_top']['toolbar']) && $vars['page']['page_top']['bs_toolbar']['#access']) {
+    // Remove default toolbar
+    unset($vars['page']['page_top']['toolbar']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function bs_toolbar_preprocess_page(&$vars) {
+  if(isset($vars['page']['page_top']['bs_toolbar']) && $vars['page']['page_top']['bs_toolbar']['#access']){
+    $vars['action_links'] = '';
+    $vars['tabs']['#primary'] = $vars['tabs']['#secondary'] = FALSE;
+  }
+}
+
+/**
+ * Create bootstrap menu
+ */
+function bs_toolbar_view(){
+  global $user;
+
+  // Make sure bootstrap is loaded
+  if(module_exists('bs_core') && bs_core_resouces_access()){
+    $type = 'scss';
+  }else{
+    $type = 'css';
+    drupal_add_library('bs_library', 'bootstrap-dropdown');
+    drupal_add_library('bs_library', 'bootstrap-tooltip');
+    drupal_add_library('bs_library', 'fontawesome');
+  }
+
+  $module_path = drupal_get_path('module', 'bs_toolbar');
+  $build = array(
+    '#theme' => 'bs_toolbar',
+    '#attached'=> array(
+      'js' => array(
+        $module_path . '/scripts/bs_toolbar'.(variable_get('bs_toolbar_compression', 0) ? '' : '.min').'.js',
+      ),
+      'css' => array(
+        $module_path . '/styles/bs_toolbar.'.$type => array(
+          'every_page' => TRUE,
+        ),
+      ),
+    ),
+  );
+
+  $build['toolbar'] = bs_toolbar_links(bs_toolbar_tree());
+
+  // Add logout & user account links or login link.
+  if ($user->uid) {
+    $links = array(
+      'account' => array(
+        'title' => '<i class="icon-user use-tooltip" data-title="Your Account" data-placement="bottom"></i>',
+        'href' => 'user',
+        'html' => TRUE,
+        'attributes' => array('title' => t('User account')),
+      ),
+      'search' => array(
+        'title' => '<i class="icon-search use-tooltip" data-title="Search" data-placement="bottom"></i>',
+        'href' => 'search',
+        'html' => TRUE,
+        'attributes' => array('title' => t('Search')),
+      ),
+      'logout' => array(
+        'title' => '<i class="icon-off use-tooltip" data-title="Logout" data-placement="bottom"></i>',
+        'href' => 'user/logout',
+        'html' => TRUE,
+        'attributes' => array('title' => t('Logout'), 'class' => array('bs-toolbar-logout')),
+      ),
+    );
+  }
+  else {
+     $links = array(
+      'login' => array(
+        'title' => t('Log in'),
+        'href' => 'user',
+      ),
+    );
+  }
+  $build['toolbar_user'] = array(
+    '#theme' => 'links__toolbar_user',
+    '#links' => $links,
+    '#attributes' => array('id' => 'bs-toolbar-user', 'class' => array('nav', 'pull-right')),
+  );
+
+  $build['toolbar_local'] = array();
+  $primary = menu_primary_local_tasks();
+  $secondary = menu_secondary_local_tasks();
+  if(!empty($primary) || !empty($secondary)){
+    if(is_array($primary)) foreach($primary as &$link) $link['#theme'] = 'bs_toolbar_menu_local_task';
+    if(is_array($secondary)) foreach($secondary as &$link) $link['#theme'] = 'bs_toolbar_menu_local_task';
+    $build['toolbar_local'] = array(
+      '#theme' => 'bs_toolbar_menu_local_tasks',
+      '#primary' => $primary,
+      '#secondary' => $secondary,
+    );
+  }
+
+  $shortcut = array();
+  if(module_exists('shortcut')) shortcut_preprocess_page($shortcut);
+  $build['toolbar_add_or_remove_shortcut'] = !empty($shortcut['title_suffix']['add_or_remove_shortcut']) ? $shortcut['title_suffix']['add_or_remove_shortcut'] : '';
+
+  $title = drupal_get_title();
+  if(module_exists('bs_core') && $icon = bs_icons_attach($title)){
+    $title = $icon.$title;
+  }
+
+  $build['toolbar_title'] = array();
+  if($i = htmlspecialchars_decode($title)){
+    $build['toolbar_title'] = array(
+      '#markup' => htmlspecialchars_decode($i),
+      '#prefix' => '<a class="brand" href="#">',
+      '#suffix' => '</a>',
+    );
+  }
+
+  $build['float_attributes']['class'][] = 'nav-fixed';
+
+  // Prepare the drawer links CSS classes.
+  $toolbar_drawer_classes = array(
+    'bs-toolbar-drawer',
+    'clearfix',
+    'navbar'
+  );
+  $build['toolbar_drawer_classes'] = implode(' ', $toolbar_drawer_classes);
+
+  return $build;
+}
+
+/**
+ * Gets any active action links and adds them to our toolbar.
+ * 
+ * @param  array $vars 
+ *   Page preprocess array
+ * 
+ * @return
+ *   An array of links ready for formatting
+ */
+function bs_toolbar_action_links(){
+  $tasks = menu_local_tasks();
+  if(empty($tasks['actions']['output'])) return array();
+
+  $action_links = $tasks['actions']['output'];
+
+  $link = $action_links[0]['#link'];
+  unset($action_links[0]);
+  $link['localized_options']['attributes']['class'][] = 'btn';
+  $link['localized_options']['attributes']['class'][] = 'btn-mini';
+  $link['localized_options']['attributes']['class'][] = 'btn-primary';
+  $link['localized_options']['html'] = TRUE;
+  $links = array(
+    '#theme' => 'link',
+    '#text' => '<i class="icon-plus-sign icon-white"></i> '.$link['title'],
+    '#path' => $link['href'],
+    '#options' => $link['localized_options'] ? $link['localized_options'] : array(),
+  );
+
+  if(count($action_links) >= 1){
+    $links['#suffix'] = '<button class="btn btn-primary btn-mini dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>';
+    $action_links['#prefix'] = '<ul class="dropdown-menu">';
+    $action_links['#suffix'] = '</ul>';
+  }
+
+  $action_links = array($links,$action_links);
+
+  $action_links['#prefix'] = '<div class="btn-group pull-right"><span class="btn btn-mini disabled" href="/admin/structure/block">'.t('ACTIONS').' <i class="icon-chevron-right"></i></span>';
+  $action_links['#suffix'] = '</div>';
+  $vars['action_links'] = '';
+  return $action_links;
+}
+
+/**
+ * Gets only the top level items + 1 below the 'admin' path.
+ *
+ * @return
+ *   An array containing a menu tree of top level items below the 'admin' path.
+ */
+function bs_toolbar_tree() {
+  $tree = array();
+  $admin_link = db_query('SELECT * FROM {menu_links} WHERE menu_name = :menu_name AND module = :module AND link_path = :path', array(':menu_name' => 'management', ':module' => 'system', ':path' => 'admin'))->fetchAssoc();
+  if ($admin_link) {
+    $tree = menu_build_tree('management', array(
+      'expanded' => array(),
+      'min_depth' => $admin_link['depth'] + 1,
+      'max_depth' => $admin_link['depth'] + 2,
+    ));
+  }
+
+  return $tree;
+}
+
+/**
+ * Generates a links array from a menu tree array.
+ *
+ * Based on menu_navigation_links(). Adds path based IDs and icon placeholders
+ * to the links.
+ *
+ * @return
+ *   An array of links as defined above.
+ */
+function bs_toolbar_links($tree, $child = FALSE) {
+  $links = array();
+  $num_items = count($tree);
+  $count = 0;
+  $hidden = variable_get('bs_toolbar_sidebar_hidden');
+  foreach ($tree as $i => &$data) {
+    if (!$data['link']['hidden'] && $data['link']['access']) {
+      $element = array();
+      $class = array();
+      if ($count == $num_items - 1) {
+        $class[] = 'last';
+      }
+      // Set a class if the link has children.
+      if ($data['below']) {
+        $class[] = 'expanded';
+      }
+      elseif ($data['link']['has_children']) {
+        $class[] = 'collapsed';
+      }
+      else {
+        $class[] = 'leaf';
+      }
+      if (!empty($data['link']['leaf_has_children'])) {
+        $class[] = 'has-children';
+      }
+      // Set a class if the link is in the active trail.
+      if ($data['link']['in_active_trail'] || bs_toolbar_in_active_trail($data['link']['href'])) {
+        $class[] = 'active-trail';
+        $data['link']['localized_options']['attributes']['class'][] = 'active-trail';
+      }
+      if ($data['link']['href'] == $_GET['q'] || ($data['link']['href'] == '<front>' && drupal_is_front_page())) {
+        $class[] = 'active';
+      }
+      // Set a menu link ID class.
+      $class[] = 'menu-mlid-' . $data['link']['mlid'];
+
+      // Allow menu-specific theme overrides.
+      $element['#theme'] = array('bs_toolbar_menu_link');
+      $element['#show_icon'] = $child ? TRUE : FALSE;
+      $element['#title'] = $data['link']['title'];
+      $element['#href'] = $data['link']['href'];
+      $element['#localized_options'] = !empty($data['link']['localized_options']) ? $data['link']['localized_options'] : array();
+      $element['#below'] = bs_toolbar_links($data['below'], $data['link']['mlid']);
+      $element['#original_link'] = $data['link'];
+      if(!$child){
+        $element['#localized_options']['attributes']['class'][] = 'level-1';
+        if(!empty($hidden[$data['link']['mlid']])) $class[] = 'sidebar-hidden';
+      }
+      if(!empty($element['#below'])){
+        $class[] = 'dropdown';
+        $element['#localized_options']['attributes']['class'][] = 'dropdown-link';
+      }
+      $element['#attributes']['class'] = $class;
+      // Index using the link's unique mlid.
+      $links['bs-menu-' . $data['link']['mlid']] = $element;
+    }
+    $count++;
+  }
+  if ($links) {
+
+    // Add home link
+    if(!$child){
+      $home = array('home' => array(
+        '#theme' => 'menu_link',
+        '#title' => '<i class="icon-home"></i> <span class="bs-max-hide">Home</span>',
+        '#href' => '<front>',
+        '#below' => array(),
+        '#no_icon' => true,
+        '#localized_options' => array('html'=>TRUE, 'attributes' => array('class'=>array('level-1'))),
+        '#attributes' => array('class'=>array('first', 'expanded', 'menu-mlid-home'))
+      ));
+      $links = $home + $links;
+    }
+
+    // Make sure drupal_render() does not re-order the links.
+    $links['#sorted'] = TRUE;
+    // Add the theme wrapper for outer markup.
+    // Allow menu-specific theme overrides.
+    $links['#theme_wrappers'][] = array('bs_toolbar_toolbar');
+
+    if($child){
+      array_unshift($links['#theme_wrappers'][0], 'bs_toolbar_child');
+    }
+  }
+  return $links;
+}
+
+/**
+ * Checks whether an item is in the active trail.
+ *
+ * Useful when using a menu generated by menu_tree_all_data() which does
+ * not set the 'in_active_trail' flag on items.
+ *
+ * @return
+ *   TRUE when path is in the active trail, FALSE if not.
+ *
+ * @todo
+ *   Look at migrating to a menu system level function.
+ */
+function bs_toolbar_in_active_trail($path) {
+  $active_paths = &drupal_static(__FUNCTION__);
+
+  // Gather active paths.
+  if (!isset($active_paths)) {
+    $active_paths = array();
+    $trail = menu_get_active_trail();
+    foreach ($trail as $item) {
+      if (!empty($item['href'])) {
+        $active_paths[] = $item['href'];
+      }
+    }
+  }
+  return in_array($path, $active_paths);
+}
+
+function theme_bs_toolbar_toolbar($variables) {
+  $output = '<a id="bs-toggle" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>';
+
+  if(strpos($variables['tree'], 'sidebar-hidden') !== FALSE){
+    $output .= '<a id="bs-toggle-hidden" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>';
+  }
+
+  $output .= '<ul id="bs-toolbar-nav" class="nav">' . $variables['tree'] . '</ul>';
+  return $output;
+}
+
+function theme_bs_toolbar_child($variables) {
+  return '<a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a><ul class="dropdown-menu">' . $variables['tree'] . '</ul>';
+}
+
+function theme_bs_toolbar_drawer($variables) {
+  return '<div class="btn-group pull-left"><a class="dropdown-toggle btn" data-toggle="dropdown" href="#"><i class="icon-bookmark"></i> <b class="caret"></b></a><ul class="dropdown-menu">' . $variables['tree'] . '</ul></div>';
+}
+
+function theme_bs_toolbar_menu_link($variables) {
+  $element = &$variables['element'];
+  $atts = &$variables['element']['#attributes']; //alias
+  if( isset($atts['class'])
+      && in_array('active-trail',$atts['class']) ) {
+    $atts['class'][] = 'active';
+  }
+  if(module_exists('bs_core') && empty($element['#no_icon'])){
+    if(!empty($element['#icon'])){
+      $element['#title'] = bs_icons_format($element['#icon']).$element['#title'];
+      $element['#localized_options']['html'] = TRUE;
+    }
+    else if($icon = bs_icons_attach($element['#title'])){
+      $element['#title'] = $icon.$element['#title'];
+      $element['#localized_options']['html'] = TRUE;
+    }
+  }
+
+  return theme_menu_link($variables);
+}
+
+/**
+ * Returns HTML for primary and secondary local tasks.
+ *
+ * @ingroup themeable
+ */
+function theme_bs_toolbar_menu_local_tasks(&$vars) {
+  $output = '';
+
+  if (!empty($vars['primary'])) {
+    if (!empty($vars['secondary'])){
+      foreach (element_children($vars['primary']) as $key) {
+        if(!empty($vars['primary'][$key]['#active'])){
+          $vars['primary'][$key]['#children'] = $vars['secondary'];
+        }
+      }
+    }
+    $output .= '<div class="btn-group pull-right">';
+    $output .= '<span class="btn btn-mini disabled" href="/admin/structure/block">'.t('TASKS').' <i class="icon-chevron-right"></i></span>';
+    $output .= drupal_render($vars['primary']);
+    $output .= '</div>';
+  }
+
+  return $output;
+}
+
+/**
+ * Returns HTML for a single local task link.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - element: A render element containing:
+ *     - #link: A menu link array with 'title', 'href', and 'localized_options'
+ *       keys.
+ *     - #active: A boolean indicating whether the local task is active.
+ *
+ * @ingroup themeable
+ */
+function theme_bs_toolbar_menu_local_task($vars) {
+  $link = $vars['element']['#link'];
+  $is_view = strpos($link['href'], 'admin/structure/views') !== FALSE ? TRUE : FALSE;
+
+  $link_text = $link['title'];
+  $secondary = empty($vars['element']['#secondary']) ? FALSE : TRUE;
+
+  if (!empty($vars['element']['#active'])) {
+    // Add text to indicate active tab for non-visual users.
+    $active = '<span class="element-invisible">' . t('(active tab)') . '</span>';
+
+    // If the link does not contain HTML already, check_plain() it now.
+    // After we set 'html'=TRUE the link will not be sanitized by l().
+    if (empty($link['localized_options']['html'])) {
+      $link['title'] = check_plain($link['title']);
+    }
+    $link['localized_options']['html'] = TRUE;
+    if(!$secondary) $link['localized_options']['attributes']['class'][] = 'btn-warning';
+    $link_text = t('!local-task-title!active', array('!local-task-title' => $link['title'], '!active' => $active));
+  }
+
+  $link['localized_options']['attributes']['class'][] = 'btn';
+  $link['localized_options']['attributes']['class'][] = 'btn-mini';
+  if($secondary) $link['localized_options']['attributes']['class'][] = 'btn-primary';
+
+  if(module_exists('bs_core') && $icon = bs_icons_attach(strip_tags(str_replace('(active tab)', '', $link_text)))){
+    $link_text = $icon.$link_text;
+    $link['localized_options']['html'] = true;
+  }
+  $output = l($link_text, $link['href'], $link['localized_options']) . "\n";
+
+  //if($is_view) $output = '<li>'.$output.'</li>';
+
+  if(!empty($vars['element']['#children'])){
+    foreach($vars['element']['#children'] as &$l){
+      $l['#secondary'] = TRUE;
+    }
+    $output .= render($vars['element']['#children']);
+  }
+
+  return $output;
+}
+
+/**
+ * Preprocess all bs_toolbar_tree theme functions
+ */
+function template_preprocess_bs_toolbar_menu_tree(&$variables) {
+  $variables['tree'] = $variables['tree']['#children'];
+}

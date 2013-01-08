@@ -1,0 +1,361 @@
+#copyright a{
+  background: image-url('august-augustash.png') no-repeat left center;
+}
+
+#copyright a:hover{
+  color:#81d2f6;
+  span{
+    color:#69A9C5;
+  }
+  text-decoration: none;
+}
+
+/* @group Exposed Filters */
+
+.exposed-filters .form-item label{
+  width: auto;
+  line-height: 28px;
+  padding-right: 3px;
+  color: #979797;
+  font-weight: bold;
+  font-size: .8em;
+  text-transform: uppercase;
+}
+
+.exposed-filters .form-item{
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.exposed-filters .form-actions{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+.form-options-icon span{
+  display:none;
+}
+
+.info{
+  @extend blockquote;
+  margin-bottom:20px;
+  margin-top:-20px;
+  color:#265d78;
+  ul{
+    color:#3987AD;
+    li{
+      line-height:1.1em;
+    }
+  }
+}
+
+.vertical-tabs fieldset.default-fallback, 
+div.field-group-tabs-wrapper div.field-type-image fieldset, 
+div.field-group-tabs-wrapper div.field-type-file fieldset, 
+div.field-group-tabs-wrapper div.field-type-datetime fieldset{
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+#edit-field-development{
+  .select-or-other{
+    display:inline-block;
+  }
+  .field-suffix{
+    display:inline-block;
+    font-size:.9em;
+  }
+}
+
+.vbo-views-form .accordion{
+  display:none;
+}
+
+.field-name-field-member-type .field-item{
+  display:inline-block;
+}
+
+.view-cpanel-users-companies,
+.view-id-cpanel_homes .field-name-field-belongs-to-showcase,
+.view-id-cpanel_showcases .field-name-field-showcase-dates,
+.view-id-cpanel_showcases .field-name-field-showcase-timeframe,
+.view-id-cpanel_homes .views-field-field-belongs-to-showcase,
+.view-id-cpanel_homes .views-field-title-1{
+  font-size:.9em;
+}
+
+.view-id-cpanel_homes .views-field-nothing{
+  width:45px;
+}
+
+.view-cpanel-entry-homes .form-actions{
+  display:none;
+}
+
+/* @end */
+
+/* @group VIEWS: Exposed */
+
+// .views-exposed-form .views-exposed-widgets,
+// .views-exposed-form .views-exposed-widget .form-submit{
+//   margin: 0;
+// }
+
+// .views-exposed-form .views-exposed-widget{
+//   float: none;
+//   padding: 0;
+//   display: inline;
+// }
+
+/* @end */
+
+/* @group VIEWS: Bulk Operations */
+
+.vbo-views-form div.form-type-checkbox{
+  padding: 0;
+}
+
+.vbo-views-form input.vbo-select{
+  margin: 0;
+}
+
+.vbo-views-form .form-actions{
+  display: none;
+}
+
+/* @end */
+
+/* @group EDITABLE FIELDS */
+
+.editablefield-item label{
+  float: left;
+  padding-right: 2px;
+}
+
+.editablefield-item .form-item, 
+.editablefield-item .form-actions{
+  padding: 0;
+}
+
+.editablefield-item span.autocomplete-deluxe-value-delete{
+  float: none;
+}
+
+.editablefield-item .form-actions{
+  display: block;
+  border: none;
+  background: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.editablefield-item .form-wrapper{
+  display: inline-block;
+}
+
+.editablefield-item .autocomplete-deluxe-values{
+  display: block;
+}
+
+.editablefield-item .ajax-progress{
+  position: absolute;
+  top: 1px;
+  right: 0;
+ overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+.editablefield-item .modal .ajax-progress{
+  top: 15px;
+  right: 15px;
+}
+
+table td.views-field-editablefield{
+  vertical-align: top;
+}
+
+.views-field-editablefield .editablefield-item{
+  position: relative;
+}
+
+.views-field-editablefield .field{
+  margin-left: 30px;
+}
+
+.views-field-editablefield .editablefield-edit{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* @end */
+
+/* @group Views */
+
+.table td.views-align-left {
+    text-align: left;
+}
+.table td.views-align-right {
+    text-align: right;
+}
+/* General View */
+#edit-display-settings-top {
+  padding-bottom: 8px;
+}
+.views-display-column > .ctools-toggle.ctools-toggle-collapsed {
+  margin-top: 15px;
+}
+.views-display-column > .ctools-toggle {
+  margin-top: 18px;
+}
+.views-filterable-options .filterable-option .form-type-checkbox {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.views-filterable-options .even .form-type-checkbox {
+  background-color: #f8f8f8;
+}
+#preview-submit-wrapper {
+  margin-top: 4px;
+}
+th.views-field-status,
+td.views-field-status,
+th.views-field-field-ad-status,
+td.views-field-field-ad-status{
+  width: 30px;
+  text-align: center;
+}
+td.views-field-views-bulk-operations{
+  width: 20px;
+}
+
+/* @end */
+
+/* @group Property Create/Edit */
+
+.node-form .tab-content{
+  overflow: visible;
+}
+
+#property-node-form #edit-field-home-features,
+#property-node-form #edit-field-directions{
+  min-height:180px;
+  position:relative;
+  .grippie{
+    display:none;
+  }
+  .form-textarea-wrapper{
+    margin-right:300px;
+  }
+  .description{
+    width:280px;
+    position:absolute;
+    top:10px;
+    right:0;
+    strong{
+      font-size:1.1em;
+      padding-bottom:5px;
+      display:block;
+    }
+    span{
+      display:block;
+      float:left;
+      width:50%;
+    }
+  }
+}
+
+#edit-field-development{
+  .description{
+    margin-top:-12px;
+  }
+}
+
+#edit-field-price,
+#edit-field-other-homes-from,
+#edit-field-other-homes-to{
+  .description{
+    margin-top:-8px;
+    padding-left:10px;
+  }
+}
+
+#edit-field-other-homes-from,
+#edit-field-other-homes-to{
+  display:inline-block;
+  padding-right:20px;
+}
+
+#builder-node-form,
+#remodeler-node-form,
+#associate-node-form,
+#property-node-form,
+#entry-node-form{
+  .description{
+    strong{
+      color:#6d6d6d;
+    }
+    font-size:11px;
+    line-height:normal;
+    color:#999999;
+    text-shadow: 0 1px 0 #fff;
+  }
+}
+
+.counter{
+  @extend .text-info;
+  font-size:.9em;
+}
+
+/* @end */
+
+/* @group Changes */
+
+.view-cpanel-changes{
+  table{
+    margin:0 0 20px;
+    @extend .well;
+  }
+  h3{
+    font-weight:100;
+    span{
+      font-weight:bold;
+    }
+  }
+  thead,tbody{
+    font-size:.9em;
+  }
+  table.table td{
+    vertical-align:top;
+    width:25%;
+    .views-field{
+      padding:0 10px;
+    }
+  }
+  .views-field-field-name{
+    font-weight:bold;
+    font-size:1.2em;
+  }
+  .views-label{
+    color:#959595;
+
+  }
+}
+
+/* @end */
+
+/* Export */
+
+#views-exposed-form-cpanel-export-page{
+  .views-exposed-widget{
+    float:none !important;
+  }
+  .tabledrag-toggle-weight-wrapper{
+    display:none;
+  }
+}

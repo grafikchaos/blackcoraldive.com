@@ -1,0 +1,13 @@
+name 				= Valet
+description = A site navigation tool similar to Alfred for OSX.
+version     = VERSION
+core 				= 7.x
+
+dependencies[] = menu
+dependencies[] = ctools
+dependencies[] = libraries
+dependencies[] = jquery_update
+
+; Our plugins interfaces and abstract implementations.
+files[] = plugins/links/abstract.inc
+files[] = plugins/entity/abstract.inc

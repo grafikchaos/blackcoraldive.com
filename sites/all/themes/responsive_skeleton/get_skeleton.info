@@ -1,0 +1,24 @@
+name = Get Skeleton
+description = Responsive, mobile friendly base theme based on Skeleton
+core = 7.x
+engine = phptemplate
+regions[header] = Header
+regions[highlighted] = Highlighted
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = Left sidebar
+regions[sidebar_second] = Right sidebar
+regions[footer] = Footer
+; stylesheets[all][] = css/base.css
+; stylesheets[all][] = css/layout.css
+; stylesheets[all][] = css/skeleton.css
+; stylesheets[all][] = css/get_skeleton.css
+; scripts[] = scripts/tabs.js
+screenshot = screenshot.png
+
+; Information added by drupal.org packaging script on 2012-09-23
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "responsive_skeleton"
+datestamp = "1348436974"
+

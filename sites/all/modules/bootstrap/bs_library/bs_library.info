@@ -1,0 +1,5 @@
+name = Twitter Bootstrap Library
+description = Twitter Bootstrap SASS Library for Drupal!
+package = Bootstrap
+core = 7.x
+

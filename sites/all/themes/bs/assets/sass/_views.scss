@@ -1,0 +1,18 @@
+.views-exposed-form{
+	label{
+		font-weight:normal;
+	}
+	.form-select,
+	.form-text{
+		@extend .input-medium;
+	}
+	.views-reset-button .form-submit{
+		@extend .btn-link;
+		padding-left:0;
+		padding-right:0;
+	}
+}
+
+.view .pagination{
+	clear:both;
+}

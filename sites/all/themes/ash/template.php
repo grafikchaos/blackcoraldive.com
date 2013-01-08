@@ -3,27 +3,14 @@
 /**
  * Override the exposed home search to add certain classes and placholder text.
  */
-function ash_form_alter(&$form, &$form_state, $form_id) {	
-	
+function ash_form_alter(&$form, &$form_state, $form_id) {
+
 	// Add classes to the profile email form submit buttons
 	if ($form_id == 'email_mail_page_form') {
   	$form['submit']['#attributes']['class'][] = 'btn-large btn-primary';
 	}
-	
+
   if ($form_id == 'views_exposed_form') {
-  	switch($form_state['view']->name){
-	  	case 'search_properties':
-	  		$form['query']['#attributes']['placeholder'] = t('Enter Parade Number, Street Address, City, Zip, etc...');
-	  		$form['submit']['#value'] = t('Search');
-	  		break;
-      case 'search_remodeled':
-        $form['query']['#attributes']['placeholder'] = t('Enter Parade Number, Street Address, City, Zip, etc...');
-        $form['submit']['#value'] = t('Search');
-        break;
-	  	case 'search':
-	  		$form['query']['#attributes']['placeholder'] = t('Search Entire Site...');
-	  		break;
-  	}
     $form['submit']['#attributes']['class'][] = 'btn-large';
     // Adds class to the development and company name fields in the filter sidebar
     $form['development']['#attributes']['class'][] = 'chosen-selector';
@@ -33,38 +20,15 @@ function ash_form_alter(&$form, &$form_state, $form_id) {
 	  $form['actions']['submit']['#value'] = t('Post Comment');
 	  $form['actions']['submit']['#attributes']['class'][] = 'btn-primary';
   }
-  
+
   $form['reset']['#attributes']['class'][] = 'btn-large';
-  
+
   if ($form_id == 'user_login') {
 	  $form['actions']['submit']['#attributes']['class'][] = 'btn-large btn-primary';
   }
-  
+
   if ($form_id == 'user_register_form') {
 	  $form['actions']['submit']['#attributes']['class'][] = 'btn-large';
-  }
-}
-
-/**
- * Preprocess HTML
- */
-function ash_preprocess_html(&$vars) {
-  if(arg(0) == 'homes') $vars['classes_array'][] = 'page-homes';
-
-  // If on an individual node page, add the node type to body classes.
-  if ($node = menu_get_object()) {
-    if(!empty($node) && !empty($node->field_mn_green_path[$node->language])){
-      if(!empty($node->field_mn_green_path[$node->language][0]['value'])) $vars['classes_array'][] = 'mn-green-path';
-    }
-    if(!empty($node) && !empty($node->field_dream_home[$node->language])){
-      if(!empty($node->field_dream_home[$node->language][0]['value'])) $vars['classes_array'][] = 'dream-home';
-    }
-    if(!empty($node) && !empty($node->field_dream_remodeled_home[$node->language])){
-      if(!empty($node->field_dream_remodeled_home[$node->language][0]['value'])) $vars['classes_array'][] = 'dream-remodeled-home';
-    }
-    if(!empty($node) && $node->type == 'property' && !empty($node->member_company_type)){
-      $vars['classes_array'][] = 'home-type-'.$node->member_company_type;
-    }
   }
 }
 
@@ -74,18 +38,6 @@ function ash_preprocess_html(&$vars) {
 function ash_preprocess_page(&$vars) {
 
   $title_path = $_GET['q'];
-  
-  if (strpos($title_path,'directory/builders') !== false) {
-    drupal_set_title('Find Trusted, Qualified Builders in Minnesota | MN');
-  }
-  
-  if (strpos($title_path,'directory/remodelers') !== false) {
-    drupal_set_title('Find Qualified, Professional Remodelers in Minnesota | MN');
-  }
-  
-  if (strpos($title_path,'directory/products-services') !== false) {
-    drupal_set_title('Find Minnesota Landscapers, Cabinet Makers, Home Security Services & More');
-  }
 
 	$node = isset($vars['node']) ? $vars['node'] : false;
 	$vars['title_hide'] = FALSE;
@@ -95,13 +47,13 @@ function ash_preprocess_page(&$vars) {
 
 	drupal_add_js('misc/ui/jquery.effects.core.min.js', 'file', JS_LIBRARY);
 	drupal_add_js('misc/ui/jquery.effects.pulsate.min.js', 'file', JS_LIBRARY);
-	drupal_add_js($path . '/assets/js/ash.modernizr.js', 
+	drupal_add_js($path . '/assets/js/ash.modernizr.js',
 		array(
 			'type' => 'file',
 			'weight' => 1,
 			'group' => JS_LIBRARY,
 			'every_page' => TRUE
-			
+
 		)
 	);
 	drupal_add_js($path . '/assets/js/ash.jquery.example.min.js',
@@ -112,22 +64,22 @@ function ash_preprocess_page(&$vars) {
 			'every_page' => TRUE
 		)
 	);
-	drupal_add_js($path . '/assets/js/ash.jquery.easing.1.3.js', 
+	drupal_add_js($path . '/assets/js/ash.jquery.easing.1.3.js',
 		array(
 			'type' => 'file',
 			'weight' => 1,
 			'group' => JS_LIBRARY,
 			'every_page' => TRUE
-			
+
 		)
 	);
-	drupal_add_js($path . '/assets/js/ash.jquery.bxSlider.min.js', 
+	drupal_add_js($path . '/assets/js/ash.jquery.bxSlider.min.js',
 		array(
 			'type' => 'file',
 			'weight' => 1,
 			'group' => JS_LIBRARY,
 			'every_page' => TRUE
-			
+
 		)
 	);
 	// if ($path = libraries_get_path('twitter_bootstrap')) {
@@ -149,7 +101,7 @@ function ash_preprocess_page(&$vars) {
 function ash_preprocess_node(&$vars) {
   $node = isset($vars['node']) ? $vars['node'] : false;
   // Allow for custom templates by view mode
-  $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__' . $vars['view_mode'];  
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__' . $vars['view_mode'];
 
   // Lets make flags available as standalone elements in the template
   if(!empty($vars['content']['links']['flag']['#links'])){
@@ -167,102 +119,7 @@ function ash_preprocess_node(&$vars) {
       );
     }
   }
-
-  if($node->type == 'property' && !empty($node->field_showcase_number[LANGUAGE_NONE][0]['value']) && !empty($node->member_company_type) && $node->member_company_type == 'remodeler'){
-    $vars['content']['field_showcase_number'][0]['#markup'] = 'R'.$vars['content']['field_showcase_number'][0]['#markup'];
-  }
-
-  if(!empty($vars['content']['sharethis'])){
-
-  	$close = '<button class="sharethis-hide btn btn-mini pull-right"><i class="icon-remove"></i></button>';
-  	$popup = '
-			<div class="sharethis-popup popover clickover fade bottom in" style="display: none; top:-10px; left:-90px">
-			<div class="arrow"></div>
-			<div class="popover-inner" style="width: 235px;">
-			<h3 class="popover-title">Share '.$close.'</h3>
-			<div class="popover-content">
-			'.render($vars['content']['sharethis']).'
-			</div></div></div>
-  	';
-  	$sharethis = array(
-  		'#tag' => 'div',
-  		'#type' => 'html_tag',
-  		'#attributes' => $vars['content']['sharethis']['#attributes'],
-  		'#value' => '<a class="sharethis-btn btn btn-mini" data-original-title="Share" data-content-selector="member-top-social-sharethis"><i class="icon-share" style="color:#3A87AD"></i> Share</a>
-        <div class="sharethis-popup-container" style="position:relative;">'.$popup.'</div>',
-      '#weight' => $vars['content']['sharethis']['#weight']
-  	);
-  	$vars['content']['sharethis'] = $sharethis;
-  }
-  $vars['level'] = 0;
-  if(in_array($vars['node']->type, array('builder', 'remodeler', 'associate', 'property')) && !empty($vars['node']->field_level)){
-    $vars['level'] = empty($vars['node']->field_level[LANGUAGE_NONE][0]['value']) ? 0 : $vars['node']->field_level[LANGUAGE_NONE][0]['value'];
-  }
-
-  if(!empty($vars['content']['field_description'][0]['#markup'])){
-    $vars['content']['field_description'][0]['#markup'] = htmlspecialchars_decode(check_markup($vars['content']['field_description'][0]['#markup'], 'html_clean'));
-  }
-
-  if(!empty($vars['content']['field_home_features'][0]['#markup'])){
-    $vars['content']['field_home_features'][0]['#markup'] = htmlspecialchars_decode(check_markup($vars['content']['field_home_features'][0]['#markup'], 'html_clean'));
-  }
-
-  if($node && in_array($node->type, array('property'))){
-    $extras = array();
-    $content = &$vars['content'];
-    // Add energy efficient tour icon to property extras
-    if(!empty($content['field_property_extras'][0]['#items'])){
-      $extras = $content['field_property_extras'][0]['#items'];
-    }
-    // Add energy efficient tour icon to property extras
-    if(!empty($content['field_energy_efficient_home_tour'][0])){
-      $extras[] = $content['field_energy_efficient_home_tour'][0]['#markup'];
-    }
-    // Green path
-    if(!empty($content['field_mn_green_path'][0]['#markup'])){
-      $extras[] = $content['field_mn_green_path'][0]['#markup'];
-    }
-    // Dream homes
-    if(!empty($content['field_dream_home'][0])){
-      $extras[] = $content['field_dream_home'][0]['#markup'];
-    }
-    // Dream remodeled homes
-    if(!empty($content['field_dream_remodeled_home'][0])){
-      $extras[] = $content['field_dream_remodeled_home'][0]['#markup'];
-    }
-    $extraas = strip_tags(implode('', $extras));
-    if(count($extras) && !empty($extraas)){
-      $content['extras'] = array(
-        '#theme' => 'field',
-        '#title' => 'Additional Info',
-        '#formatter' => 'textformatter_list',
-        '#field_type' => 'list_text',
-        '#label_display' => 'inline',
-        '#items' => $extras,
-        '#bundle' => 'property',
-        '#field_name' => 'field_property_extras',
-        0 => array(
-          '#theme' => 'item_list',
-          '#type' => 'ul',
-          '#items' => $extras,
-          '#attributes' => array('class'=>array('textformatter-list')),
-        )
-      );
-    }
-  }
 }
-
-function ash_user_view_alter(&$build, $type){
-	$view = views_get_view('favorites');
-  $view->set_display('all');
-  $view->execute();
-  $build['favorites'] = array(
-  	'#markup' => $view->preview()
-  );
-	$view->destroy();
-}
-
-
 
 /**
  * Themes a select drop-down as a collection of links

@@ -1,0 +1,14 @@
+name = August
+description = "August Ash admin theme of BS"
+version = 1.0
+base theme = "bs"
+core = 7.x
+
+; Stylesheets
+stylesheets[all][] = assets/sass/august.style.scss
+
+; Scripts
+scripts[] = assets/js/august.js
+
+; Ambit
+ambit[images] = assets/img

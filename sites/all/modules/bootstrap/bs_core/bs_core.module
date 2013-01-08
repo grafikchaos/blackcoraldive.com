@@ -1,0 +1,173 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function bs_core_menu() {
+  $items = array();
+  $items['admin/config/system/core'] = array(
+    'title' => 'Bootstrap Core',
+    'description' => t('Settings for Twitter Bootstrap core.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('bs_core_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'file' => 'bs_core.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_init
+ */
+function bs_core_init(){
+  $access = bs_core_resouces_access();
+  drupal_alter('bs_core_resouces_access', $access);
+  if($access){
+    bs_core_resources_load();
+  }
+}
+
+/**
+ * Core resources
+ */
+function bs_core_resources_load(){
+  drupal_add_js(drupal_get_path('module', 'bs_core').'/bs_core.js', array('every_page'=>TRUE));
+  drupal_add_library('bs_library', 'bootstrap');
+  drupal_add_library('bs_library', 'fontawesome');
+}
+
+/**
+ * Checks if resources should be added to the page
+ */
+function bs_core_resouces_access(){
+  if(variable_get('bs_core_admin_only', FALSE)){
+    global $theme;
+    if ($theme !== variable_get('admin_theme', $theme)) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}
+
+function bs_button_class_attach($name){
+  $name = t($name);
+  $classes = &drupal_static(__FUNCTION__);
+  if (!isset($classes)) {
+    $classes = array(
+      //specifics
+      t('Save and add') => 'btn-info',
+      t('Add another item') => 'btn-info btn-mini',
+      t('Add effect') => 'btn-primary',
+      t('Add and configure') => 'btn-primary',
+      t('Update style') => 'btn-primary',
+      t('Download feature') => 'btn-primary',
+
+      //generals
+      t('Save') => 'btn-primary',
+      t('Save settings') => 'btn-primary',
+      t('Publish') => 'btn-primary',
+      t('Next') => 'btn-primary',
+      t('Apply') => 'btn-primary',
+      t('Add') => 'btn-primary',
+      t('Save configuration') => 'btn-primary',
+      t('Create') => 'btn-primary',
+      t('Continue') => 'btn-primary',
+      t('Confirm') => 'btn-primary',
+      t('Submit') => 'btn-primary',
+      t('Export') => 'btn-primary',
+      t('Import') => 'btn-primary',
+      t('Restore') => 'btn-primary',
+      t('Rebuild') => 'btn-primary',
+      t('Search') => 'btn-primary',
+      t('Add') => 'btn-info',
+      t('Enable') => 'btn-success',
+      t('Disable') => 'btn-warning',
+      t('Block') => 'btn-warning',
+      t('Update') => 'btn-info',
+      t('Delete') => 'btn-danger',
+      t('Remove') => 'btn-danger',
+      t('Edit this field') => 'btn-mini',
+      t('image') => 'btn-info',
+    );
+    drupal_alter('bs_button_class', $classes);
+  }
+  return empty($classes[$name]) ? FALSE : $classes[$name];
+}
+
+/**
+ * Specify font-awesome icons for use in site links
+ * 
+ * @param  [string]  $name
+ *   The text you would like to apply an icon to
+ * @param  boolean $specific
+ *   If you want to match the text exactly or do strpos search for the text
+ *   
+ * @return [string/boolean]
+ *   If icon is found, icon HTML will be return, else false
+ */
+function bs_icons_attach($name, $specific = TRUE){
+  $name = t($name);
+  $icons = &drupal_static(__FUNCTION__);
+  if (!isset($icons)) {
+    $icons = array(
+      'icon-file' => array(t('Content')),
+      'icon-columns' => array(t('Structure')),
+      'icon-eye-open' => array(t('Appearance')),
+      'icon-user' => array(t('People')),
+      'icon-inbox' => array(t('Modules')),
+      'icon-cog' => array(t('Configuration'), t('Settings')),
+      'icon-wrench' => array(t('Development')),
+      'icon-bar-chart' => array(t('Reports')),
+      'icon-reorder' => array(t('Blocks')),
+      'icon-copy' => array(t('Content types')),
+      'icon-cogs' => array(t('System')),
+      'icon-edit' => array(t('Content authoring'), t('Add content'), t('Edit this field')),
+      'icon-magnet' => array(t('User interface')),
+      'icon-film' => array(t('Media')),
+      'icon-search' => array(t('Search and metadata'), t('Search'), t('Find content')),
+      'icon-map-marker' => array(t('Regional and language')),
+      'icon-film' => array(t('Media')),
+      'icon-sitemap' => array(t('Web services')),
+      'icon-retweet' => array(t('Workflow')),
+      'icon-plus' => array(t('Add'), t('Create'), t('Refine'), t('Add another item')),
+      'icon-ok' => array(t('Save'), t('Save configuration'), t('Save blocks'), t('Save content type'), t('Publish'), t('Save settings')),
+      'icon-trash' => array(t('Delete'), t('Remove')),
+      'icon-minus-sign' => array(t('Disable'), t('Reset'), t('Uninstall')),
+      'icon-refresh' => array(t('Apply'), t('Update'), t('Update preview')),
+      'icon-ban-circle' => array(),
+      'icon-share-alt' => array(t('Continue')),
+      'icon-undo' => array(t('Undo')),
+      'icon-list' => array(t('List'),t('Tasks')),
+      'icon-lock' => array(t('Permissions')),
+      'icon-filter' => array(t('Filter')),
+      'icon-fire' => array(t('Views')),
+      'icon-dashboard' => array(t('Administration')),
+      'icon-eye-close' => array(t('Clear Cache')),
+      'icon-bolt' => array(t('Status report')),
+      'icon-upload' => array(t('Available updates')),
+      'icon-chevron-right' => array(t('Next')),
+      'icon-chevron-left' => array(t('Previous')),
+      'icon-save' => array(t('Save as draft')),
+      'icon-asterisk' => array(t('Features')),
+      'icon-tasks' => array(t('Menus')),
+    );
+    drupal_alter('bs_icons', $icons);
+  }
+  if($specific){
+    foreach($icons as $icon => $names){
+      if(in_array($name, $names)){
+        return '<i class="'.$icon.' icon-white"></i> ';
+      }
+    }
+    return FALSE;
+  }else{
+    foreach($icons as $icon => $names){
+      foreach($names as $name){
+        if (strpos($name, $search) !== FALSE) {
+          return '<i class="'.$icon.' icon-white"></i> ';
+        }
+      }
+    }
+    return FALSE;
+  }
+}

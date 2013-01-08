@@ -1,0 +1,226 @@
+// Admin
+// ----------------
+
+div.admin-panel {
+  @extend .well;
+}
+
+.compact-link a{
+  @extend .btn;
+  @extend .btn-mini;
+  @extend .btn-inverse;
+  @extend .pull-right;
+  margin: -49px 10px 10px 0; 
+}
+
+#system-modules{
+  td.description{
+    font-size:.8em;
+  }
+  td.configure a,
+  td.permissions a{
+    @extend .btn;
+    @extend .btn-mini;
+  }
+}
+
+.admin-missing{
+  @extend .text-error;
+}
+
+.admin-requirements{
+  @extend .text-warning;
+}
+
+.admin-requirements{
+  @extend .text-info;
+}
+
+.admin-list{
+  margin:20px 0 0;
+}
+
+.admin-list{
+  margin:20px 0 0;
+}
+
+.admin-list dt,
+.admin-list dt a{
+  @extend .lead;
+  margin:0;
+}
+
+.admin-list dd{
+  margin:0 0 20px;
+  font-size:.9em;
+}
+
+.admin-list dd:last-child{
+  margin-bottom:0;
+}
+
+ul#views-display-menu-tabs li{
+  margin:0;
+  text-align:left;
+}
+
+.ctools-button-processed{
+  border: none;
+  background: none;
+}
+
+.ctools-button ul{
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.rules-elements-table .tabledrag-toggle-weight-wrapper{
+  position: static;
+}
+
+.links,
+.rules-elements-table ul.rules-operations,
+.rules-elements-table ul.rules-operations-add,
+.field-collection-view-links{
+  margin:0;
+  padding:0;
+  li{
+    float:left;
+    list-style-type:none;
+    padding-right:2px;
+  }
+  // Currently this line breaks IE 7 through IE 9 browsers
+  // a{
+  //   @extend .btn;
+  //   @extend .btn-mini;
+  // }
+}
+
+// These styles revert the AAI theme logo in the footer credits to the previous version
+// .views-button-remove{
+//     @extend .btn;
+//     @extend .btn-mini;
+//     @extend .btn-danger;
+//     color:#fff !important;
+// }
+
+#views-ajax-body{
+  .views-ajax-link{
+    @extend .text-info;
+  }
+}
+
+#arrange{
+  .form-item{
+    display:inline-block;
+  }
+}
+
+.views-edit-view{
+  .views-display-settings{
+    .label{
+      background: none;
+      color: #a9a9a9;
+      text-shadow: none;
+      text-transform: uppercase;
+      font-size: .8em;
+      line-height: 1.8em;
+    }
+  }
+  .views-ui-display-tab-bucket{
+    margin:0;
+    text-align:left;
+  }
+  .pager .views-display-setting a,
+  .pager .views-display-setting span{
+    border: none;
+    padding: 0;
+    background-color: none;
+  }
+  .views-display-top .ctools-button-processed{
+    z-index: 10;
+  }
+}
+
+.theme-selector{
+  @extend .well;
+}
+
+.theme-selector .screenshot{
+  @extend .pull-left;
+  margin-right: 20px;
+  border: 10px solid $grayLight;
+  @include border-radius(2px);
+}
+
+.operations{
+  @extend .nav;
+  @extend .nav-pills;
+}
+
+.freepager-previous{
+  float:left;
+}
+
+.freepager-current{
+  h1, h2, h3, h4, h5{
+    line-height:30px;
+    margin:0;
+  }
+}
+
+// DB Log
+// ----------------
+
+#admin-dblog {
+  .dblog-notice,
+  .dblog-notice td {
+    @extend .alert-success;
+  }
+  .dblog-info,
+  .dblog-info td {
+    @extend .alert-info;
+  }
+  .dblog-warning,
+  .dblog-warning td {
+    @extend .alert;
+  }
+  .dblog-error,
+  .dblog-error td {
+    @extend .alert-error;
+  }
+}
+
+// Context
+// ----------------
+
+#context-blockform{
+  .tabledrag-toggle-weight-wrapper{
+    display:none;
+  }
+  td.blocks{
+    width:300px;
+    .label{
+      background:#999999;
+      line-height:24px;
+    }
+  }
+  td.selector{
+    width:auto;
+    vertical-align:top;
+  }
+  .form-type-checkbox{
+    display:block;
+  }
+  .add-block{
+      @extend .btn;
+      @extend .btn-mini;
+      @extend .btn-inverse;
+  }
+  .remove{
+      @extend .btn;
+      @extend .btn-mini;
+      @extend .btn-danger;
+  }
+}

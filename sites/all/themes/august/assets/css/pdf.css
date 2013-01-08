@@ -1,0 +1,17 @@
+label, th, .field-label{
+	color:#a4a4a4;
+	font-weight:normal;
+}
+
+.editablefield-edit, .form-submit{
+	display:none;
+}
+
+.field, .field-items, .field-item{
+	margin:0 !important;
+	padding:0  !important;
+}
+
+th{
+	display:none;
+}

@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * Implements hook_library().
+ */
+function bs_library_library() {
+  $libraries['bootstrap'] = array(
+    'title' => 'Twitter Bootstrap',
+    'website' => 'http://twitter.github.com/bootstrap/',
+    'version' => '2.1.0',
+    'js' => array(
+      drupal_get_path('module', 'bs_library') . '/bs_library.js' => array(),
+      drupal_get_path('module', 'bs_library') . '/lib/bootstrap.min.js' => array(),
+    ),
+    'css' => array(
+      drupal_get_path('module', 'bs_library') . '/lib/bootstrap.scss' => array(
+        'every_page' => TRUE,
+        'weight' => -1000
+      ),
+      drupal_get_path('module', 'bs_library') . '/lib/bootstrap-responsive.scss' => array(
+        'every_page' => TRUE,
+        'weight' => -1000
+      ),
+    ),
+  );
+  $libraries['bootstrap-dropdown'] = array(
+    'title' => 'Twitter Bootstrap Dropdowns',
+    'website' => 'http://twitter.github.com/bootstrap/',
+    'version' => '2.1.0',
+    'js' => array(
+      drupal_get_path('module', 'bs_library') . '/lib/javascripts/bootstrap-dropdown.js' => array(),
+    ),
+  );
+  $libraries['bootstrap-tooltip'] = array(
+    'title' => 'Twitter Bootstrap Tooltips',
+    'website' => 'http://twitter.github.com/bootstrap/',
+    'version' => '2.1.0',
+    'js' => array(
+      drupal_get_path('module', 'bs_library') . '/bs_library.js' => array(),
+      drupal_get_path('module', 'bs_library') . '/lib/javascripts/bootstrap-tooltip.js' => array(),
+    ),
+  );
+  $libraries['fontawesome'] = array(
+    'title' => 'Font Awesome',
+    'website' => 'http://fortawesome.github.com/Font-Awesome/',
+    'version' => '2.0',
+    'css' => array(
+      drupal_get_path('module', 'bs_library') . '/lib/font-awesome.scss' => array(
+        'every_page' => TRUE,
+      ),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Implements hook_valet_assets
+ */
+function bs_library_valet_assets(){
+  return array(
+    'bs_library' => array(
+      'fonts'=>'lib/fonts', 
+      'images'=>'lib/images'
+    )
+  );
+}

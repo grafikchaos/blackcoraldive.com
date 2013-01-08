@@ -51,7 +51,7 @@
       <div class="main-content">
         <a id="main-content"></a>
         <?php if ($tabs): ?>
-          <?php print render($tabs); ?>
+          <div id="local-tasks"><?php print render($tabs); ?></div>
         <?php endif; ?>
         <?php print render($title_prefix); ?>
         <?php if ($title && !$title_hide): ?>

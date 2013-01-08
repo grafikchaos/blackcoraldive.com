@@ -1,0 +1,8 @@
+name = Ambit
+description = A compass work of awesomeness.
+core = 7.x
+
+dependencies[] = ctools
+
+; Our plugins interfaces and abstract implementations.
+files[] = plugins/assets/abstract.inc

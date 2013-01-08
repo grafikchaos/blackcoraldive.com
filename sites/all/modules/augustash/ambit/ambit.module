@@ -1,0 +1,142 @@
+<?php
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function ambit_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ambit') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_type().
+ *
+ * Has plenty options. See ctools/help/plugins-creating.html
+ */
+function ambit_ctools_plugin_type() {
+  return array(
+    'assets' => array(
+      'classes' => array('class'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ambit_menu() {
+  $items = array();
+  $items['admin/config/system/ambit'] = array(
+    'title' => 'Ambit',
+    'description' => t('Manage Ambit and Compass settings.'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ambit_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  if(module_exists('devel')){
+    $items['devel/ambit/clear'] = array(
+      'title' => 'Empty Ambit cache',
+      'page callback' => 'ambit_cache_clear',
+      'description' => 'Clear the CSS cache and all database cache tables which store Ambit data.',
+      'access arguments' => array('access devel information'),
+      'menu_name' => 'devel',
+    );
+  }
+  return $items;
+}
+
+/**
+ * Implementation of hook_element_info_alter().
+ */
+function ambit_element_info_alter(&$type) {
+  array_unshift($type['styles']['#pre_render'], 'ambit_pre_render');
+}
+
+
+/**
+ * Builds the ambitcessed cache. Should only be invoked by drupal_render().
+ *
+ * @param $elements
+ *   A render array containing:
+ *   '#items': The CSS items as returned by drupal_add_css() and altered by
+ *   drupal_get_css().
+ *
+ * @return $elements
+ *   The modified (pre-rendered) $elements parameter.
+ */
+function ambit_pre_render($elements) {
+  ctools_include('plugins');
+  $operations = ctools_get_plugins('ambit', 'assets');
+  $items = &$elements['#items'];
+  foreach($operations as $name => $plugin){
+    $handler = _ambit_get_handler('assets', $name);
+    $items = $handler->assets_build($items);
+  }
+  return $elements;
+}
+
+/**
+ * Get the links handlers.
+ *
+ * @param $handler
+ *   The links handler name.
+ */
+function _ambit_get_handler($type, $name) {
+  $object_cache = drupal_static(__FUNCTION__);
+  if (!isset($object_cache[$name])) {
+    ctools_include('plugins');
+    $class = ctools_plugin_load_class('ambit', $type, $name, 'class');
+    $class = class_exists($class) ? $class : 'Ambit_'.ucfirst($type).'Handler_Broken';
+    $all_args = func_get_args();
+    $args = array_slice($all_args, 2);
+    $object_cache[$name] = new $class($name, $args);
+  }
+
+  return $object_cache[$name];
+}
+
+/**
+ * Settings form for the toolkit.
+ */
+function ambit_settings_form($form, &$form_state) {
+  $form['#submit'][] = 'ambit_flush_cache';
+  ctools_include('plugins');
+  $operations = ctools_get_plugins('ambit', 'assets');
+  foreach($operations as $name => $plugin){
+    $handler = _ambit_get_handler('assets', $name);
+    $items = $handler->settings_form($form);
+  }
+  return system_settings_form($form);
+}
+
+/**
+ * Menu callback; clears all caches, then redirects to the previous page.
+ */
+function ambit_cache_clear() {
+  ambit_flush_cache();
+  drupal_goto();
+}
+
+/**
+ * White the ambit cache and file system
+ * @return [type] [description]
+ */
+function ambit_flush_cache(){
+  cache_clear_all('ambit:map', 'cache');
+  ambit_flush_caches();
+  _drupal_flush_css_js();
+  drupal_set_message('Ambit cache cleared.');
+}
+
+/**
+ * Implementation of hook_flush_caches().
+ */
+function ambit_flush_caches() {
+  ctools_include('plugins');
+  $operations = ctools_get_plugins('ambit', 'assets');
+  foreach($operations as $name => $plugin){
+    $handler = _ambit_get_handler('assets', $name);
+    $items = $handler->flush_caches();
+  }
+}

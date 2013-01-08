@@ -1,0 +1,101 @@
+// Forms
+// ----------------
+
+label{
+	color: $grayLight;
+	font-size:1.2em;
+	text-shadow: 0 1px 0 #fff;
+	font-weight:300;
+}
+
+label.option{
+	text-transform:none;
+	font-size:.8em;
+}
+
+legend{
+	margin-bottom:18px;
+}
+
+.well .well .form-item{
+	margin:0;
+}
+
+.exposed-filters .filters .form-item,
+.exposed-filters .form-actions{
+	@extend .pull-left;
+	margin:0;
+	padding-right:.3em;
+}
+
+.filter-guidelines{
+	position: relative;
+	z-index: 2;
+}
+
+.container-inline .form-actions,
+.container-inline.form-actions{
+	display: inline-block;
+	padding:0;
+	border:none;
+}
+
+.container-inline .well{
+	display:block;
+}
+
+.form-item .inline{
+	display:inline-block
+}
+
+.form-tip{
+	color:#828282;
+	cursor:help;
+}
+
+.form-managed-file{
+	display:inline-block;
+}
+
+.form-item .form-checkbox,
+.form-item .inline .form-type-checkbox,
+.form-item .inline .form-type-radio{
+	display:inline-block;
+	padding-right:5px;
+	margin:0;
+}
+
+.form-type-link-field .form-item,
+.form-type-autocomplete-deluxe .form-type-textfield{
+	margin:0;
+}
+
+html.js input.form-autocomplete{
+	background-position: 100% 7px;
+}
+
+html.js input.throbbing{
+	background-position: 100% -13px;
+}
+
+
+// Forms: Vertical tabs
+.vertical-tabs .form-type-textfield input{
+	@include box-sizing(content-box);
+}
+
+.vertical-tabs .nav-tabs li,
+.vertical-tabs .nav-tabs a{
+	outline: none;
+}
+
+
+// Forms: Admin
+// ----------------
+.container-inline,
+.exposed-filters{
+	@extend .form-inline;
+	select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input{
+		margin:0;
+	}
+}

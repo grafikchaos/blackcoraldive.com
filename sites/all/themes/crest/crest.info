@@ -1,0 +1,41 @@
+name = Crest
+description = "Base Avencrest theme"
+version = 7.x-1.x-dev
+core = 7.x
+engine = phptemplate
+
+; Stylesheets
+; stylesheets[all][] = assets/sass/style.scss
+stylesheets[all][] = assets/sass/_layout.scss
+stylesheets[all][] = assets/sass/_tables.scss
+stylesheets[all][] = assets/sass/_views.scss
+stylesheets[all][] = assets/sass/_forms.scss
+stylesheets[all][] = assets/sass/_nav.scss
+stylesheets[all][] = assets/sass/_vertical_tabs.scss
+stylesheets[all][] = assets/sass/_blocks.scss
+stylesheets[all][] = assets/sass/_modals.scss
+stylesheets[all][] = assets/sass/_entity.scss
+stylesheets[all][] = assets/sass/_misc.scss
+stylesheets[all][] = assets/sass/_typography.scss
+
+; Scripts
+scripts[] = assets/js/script.js
+
+; Settings
+settings[shortcut_module_link] = 1
+
+; Regions
+regions[header] = Header
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = Left sidebar
+regions[sidebar_second] = Right sidebar
+regions[footer] = Footer
+
+; Ambit
+ambit[images] = assets/img
+
+; Font your Face
+fonts[google_fonts_api][] = "Advent Pro&subset=greek#100"
+fonts[google_fonts_api][] = "Lato&subset=latin#100"
+fonts[google_fonts_api][] = "Titillium Web&subset=latin#900"

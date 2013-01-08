@@ -1,0 +1,5 @@
+name = Core
+description = Provides the bootstrap core.
+package = Bootstrap
+core = 7.x
+dependencies[] = bs_library

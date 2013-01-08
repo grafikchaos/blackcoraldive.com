@@ -1,0 +1,259 @@
+// Variables
+// -------------------------
+$grayLightSoft:         #f5f5f5 !default;
+
+$subNavbarHeight:                 40px !default;
+$subNavbarBackground:             $grayLightSoft !default;
+$subNavbarBackgroundHighlight:    $grayLighter !default;
+
+$subNavbarLinkColor:              $grayDark !default;
+$subNavbarLinkColorActive:        $grayDark !default;
+$subNavbarLinkBackgroundActive:   #E9E9E9 !default;
+
+// Toolbar
+// ----------------
+
+#bs-toolbar{
+  z-index:100;
+  .nav{
+    margin: 0;
+  }
+  .bs-max-hide{
+    display:none;
+  }
+  .expanded.dropdown .dropdown-toggle{
+    display:inline-block;
+    padding-left:0px;
+    margin-left:-7px;
+  }
+  .dropdown .dropdown-link{
+    display:inline-block;
+    padding-right:25px;
+  }
+  .bs-primary .navbar{
+    margin-bottom:0;
+    .navbar-inner{
+      @include border-radius(4px 4px 0 0);
+      padding:0 10px;
+      a.level-1{
+        padding:10px;
+        font-size:13px;
+        i{
+          display:none;
+        }
+      }
+      .first a.level-1{
+        i{
+          display:inline-block;
+        }
+      }
+      .dropdown-menu a{
+        font-size:.9em;
+      }
+    }
+  }
+  .bs-secondary{
+    .navbar .navbar-inner{
+      @include border-radius(0 0 4px 4px);
+      .btn-group{
+        padding: 2px 0 0 10px;
+      }
+    }
+    .brand i{
+      color:#acacac;
+    }
+  }
+  /* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
+  .nav-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 600; /* 10 less than .navbar-fixed to prevent any overlap */
+    .navbar{
+      border-color: #d5d5d5;
+      @include border-radius(0);
+      @include box-shadow(inset 0 1px 0 rgba(0,0,0,.1));
+      margin:0;
+    }
+    .nav {
+      margin: 0 auto;
+      padding: 0;
+    }
+    .bs-primary .navbar .navbar-inner,
+    .bs-secondary .navbar .navbar-inner{
+      @include border-radius(0);
+    }
+  }
+  #bs-toolbar-user{
+    a{
+      padding:10px;
+    }
+    .account a{
+      color: $warningText;
+    }
+    .search a{
+      color: $infoText;
+    }
+    .logout a{
+      color: $errorText;
+    }
+  }
+  .add-or-remove-shortcuts{
+    @extend .pull-right;
+    padding-top:13px;
+    margin-left:-15px;
+  }
+}
+
+#bs-toolbar.has-hidden{
+  #bs-toggle-hidden{
+    display:block;
+    float:left;
+  }
+  .bs-primary{
+  }
+  .sidebar-hidden{
+    display:none;
+  }
+}
+
+#bs-toolbar-drawer{
+	margin-top:-18px;
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 979px) {
+  body.html{
+    // padding-left:320px;
+  }
+  #bs-toggle-hidden{
+    display:none !important;
+  }
+  .sidebar-hidden{
+    display:block !important;
+  }
+  #bs-toolbar{
+    .bs-max-hide{
+      display:inline;
+    }
+    .bs-primary{
+      .navbar .btn-navbar{
+        float:left;
+      }
+      #bs-toolbar-nav{
+        display:none;
+      }
+    }
+  }
+
+  #bs-toolbar-nav-slide{
+    width:0;
+    overflow:hidden;
+    padding:0;
+    background:#3f3f3f;
+    z-index:2000;
+    #bs-toolbar-nav-slide-inner{
+      padding:0;
+    }
+    .navbar{
+      margin:0;
+    }
+    .navbar-inner{
+      @include border-radius(0);
+    }
+    #bs-toggle-slide{
+      margin-left:-5px;
+      margin-right:0;
+    }
+    li{
+      display:block;
+      float:none;
+      padding: 0 15px;
+      clear:both;
+      a.level-1{
+        padding:10px;
+      }
+      a{
+        display:block;
+        i{
+          display:inline-block;
+        }
+      }
+      a.level-1:hover{
+        background:transparent;
+      }
+      a.level-1{
+        color:#fff;
+        @include border-radius(4px);
+      }
+      .dropdown-menu{
+        position: static;
+        display:block;
+        float:none;
+        li{
+          padding-left:0;
+        }
+        a:hover{
+          background:#fff;
+          color:#333;
+        }
+      }
+      .dropdown-menu:after,
+      .dropdown-menu:before{
+        position: static;
+        display:block;
+        border:none;
+      }
+      .dropdown-toggle{
+        display:none;
+      }
+    }
+  }
+}
+
+// Secondary nav
+// ----------------
+
+// Gradient is applied to it's own element because overflow visible is not honored by IE when filter is present
+.subnavbar .navbar-inner {
+  min-height: $subNavbarHeight;
+  border: 1px solid $tableBorder;
+  @include gradient-vertical($subNavbarBackgroundHighlight, $subNavbarBackground);
+  @include border-radius(4px);
+  @include box-shadow(none);
+}
+
+.subnavbar.has-secondary .navbar-inner{
+  @include border-radius(4px 4px 0 0);
+}
+
+// Links
+.subnavbar .navbar .nav > li > a {
+  float: none;
+  // Vertically center the text given $navbarHeight
+  $elementHeight: 20px;
+  padding: (($subNavbarHeight - $elementHeight) / 2 - 1) 10px (($subNavbarHeight - $elementHeight) / 2 + 1);
+  //line-height: 19px;
+  color: $linkColor;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 #fff;
+  border-right: 1px solid #E5E5E5;
+  border-left: 1px solid #F5F5F5;
+}
+
+// Hover
+.subnavbar .navbar .nav > li > a:hover {
+  background-color: #eee; // "transparent" is default to differentiate :hover from .active
+  color: $linkColorHover;
+}
+
+// Active nav items
+.subnavbar .navbar .nav .active > a, .subnavbar .navbar .nav .active > a:hover {
+  color: #777777;
+  text-decoration: none;
+  background-color: $subNavbarLinkBackgroundActive;
+  @include box-shadow(inset 0 3px 5px rgba(0, 0, 0, 0.05));
+  border-right-color: #DDDDDD;
+  border-left: 0 none;
+}

@@ -1,0 +1,58 @@
+// Tables
+// ----------------
+
+table {
+  width:100%;
+  h1,h2,h3,h4,h5{
+    margin:0;
+  }
+  table.table{
+    margin:0;
+  }
+}
+
+table.table{
+  th{
+    border-bottom:0;
+  }
+}
+
+table td,
+table.table td {
+  vertical-align:middle;
+}
+
+table.system-status-report {
+  tr.ok td.status-value {
+    @extend .alert-success;
+  }
+
+  tr.warning td.status-value {
+    @extend .alert;
+  }
+
+  tr.info td.status-value {
+    @extend .alert-info;
+  }
+
+  td.status-title {
+    font-weight:bold;
+  }
+}
+
+.tabledrag-toggle-weight{
+  @extend .btn;
+  @extend .btn-mini;
+  @extent .btn-inverse;
+  margin: -20px 0 10px 0; 
+}
+
+td.checkbox .form-checkbox{
+  margin:0;
+  float:none;
+  text-align: center;
+}
+
+table.sticky-header{
+  margin-top:85px;
+}
