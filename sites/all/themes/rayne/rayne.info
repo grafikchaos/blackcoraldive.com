@@ -1,0 +1,25 @@
+name = Rayne
+description = Rayne theme provides a solid foundation on which you can a create a bespoke theme in the shortest possible time.
+core = 7.x
+
+screenshot = screenshot.png
+settings[shortcut_module_link] = 1
+regions[content] = Content
+
+framework stylesheets[all][] = styles/rayne.reset-browser.css
+
+stylesheets[all][] = bootstrap/css/bootstrap.min.css
+stylesheets[all][] = styles/rayne.font-awesome.css
+stylesheets[all][] = styles/rayne.reset-drupal.css
+stylesheets[all][] = styles/system.menus.css
+stylesheets[all][] = styles/system.theme.css
+stylesheets[all][] = styles/rayne.base.css
+stylesheets[all][] = styles/rayne.forms.css
+stylesheets[all][] = styles/rayne.menus.css
+stylesheets[all][] = styles/rayne.layout.css
+stylesheets[all][] = styles/rayne.typography.css
+stylesheets[all][] = styles/rayne.content.css
+stylesheets[all][] = jqueryui/rayne.jquery-ui.css
+
+scripts[] = scripts/rayne.theme.js
+scripts[] = bootstrap/js/bootstrap.min.js

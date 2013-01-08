@@ -1,0 +1,515 @@
+/**
+ * @file
+ * Form styles.
+ */
+
+/* General */
+
+.description {
+  color: #777;
+}
+
+.form-inline .form-item,
+.form-inline .views-widget,
+.form-inline .form-wrapper{
+  display: inline;
+}
+
+.form-inline .description{
+  display: none;
+}
+
+.well .form-item, 
+.well .form-actions,
+.well label,
+.well .autocomplete-deluxe-values{
+  margin: 0;
+  padding: 0;
+}
+
+.bulk-operations-container{
+  margin-top: 10px;
+}
+
+html.js input.form-autocomplete {
+    background-position: 100% 7px;
+}
+html.js input.throbbing {
+    background-position: 100% -13px;
+}
+
+/* Fieldsets */
+
+legend{
+  margin-bottom: 5px;
+  border: none;
+}
+
+.fieldset-description{
+  color: #888;
+}
+
+.well .well{
+  background-color: #ececec;
+}
+
+table thead th label{
+  font-size:inherit;
+  white-space: nowrap;
+  margin:0;
+  padding:0 5px;
+}
+
+.vertical-tabs fieldset.default-fallback, 
+div.field-group-tabs-wrapper 
+div.field-type-image fieldset, 
+div.field-group-tabs-wrapper 
+div.field-type-file fieldset, 
+div.field-group-tabs-wrapper div.field-type-datetime fieldset{
+  border:none;
+  padding:0;
+}
+
+/*.vertical-tabs-panes .fieldset-wrapper.well{
+  background-color: transparent;
+  border: none;
+  border-radius: 4px 4px 4px 4px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  min-height: 0;
+  padding: 0;
+}*/
+
+/*fieldset .fieldset-legend {
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+fieldset {
+	padding: 40px 0 0;
+	margin: 2em 0 !important;
+	position: relative;
+}
+
+fieldset legend {
+	width: auto;
+	font-size: 19px;
+	line-height: 36px;
+	margin: 0 0 0 20px;
+	padding: 0;
+}
+
+fieldset .fieldset-legend {
+	position: absolute;
+}
+
+fieldset .fieldset-wrapper {
+	padding: 0 20px 20px;
+	margin-top: 20px;
+}
+
+fieldset .fieldset-wrapper fieldset .fieldset-wrapper,
+fieldset.collapsible .fieldset-wrapper {
+	margin-top: 0;
+}*/
+
+html.js fieldset.collapsed {
+  border-width: 1px;
+  height: auto;
+}
+
+fieldset.collapsed {
+  background-color: transparent;
+}
+
+a.fieldset-title {
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+/* Vertical tabs */
+
+.vertical-tabs fieldset.vertical-tabs-pane {
+  padding: 10px;
+}
+
+table .radio input[type="radio"], table .checkbox input[type="checkbox"]{
+	margin: 0;
+	float: none;
+}
+
+.vertical-tabs .form-type-textfield input{
+	height: 28px;
+}
+
+.vertical-tabs ul.vertical-tabs-list li:hover{
+  background: #f7f7f7;
+}
+
+.vertical-tabs ul.vertical-tabs-list li.selected{
+  background: #fff;
+}
+
+.vertical-tabs ul.vertical-tabs-list li,
+.vertical-tabs ul.vertical-tabs-list li a,
+.vertical-tabs ul.vertical-tabs-list li a:active,
+.vertical-tabs ul.vertical-tabs-list li a:focus,
+.vertical-tabs ul.vertical-tabs-list li a:hover{
+  outline: none !important;
+}
+
+.vertical-tabs ul.vertical-tabs-list li a:hover strong,
+.vertical-tabs ul.vertical-tabs-list li a:active strong,
+.vertical-tabs ul.vertical-tabs-list li a:focus strong{
+  text-decoration: none;
+}
+
+/* Exposed Filters */
+
+.exposed-filters .filters{
+  float: none;
+  width: auto;
+  display: inline-block;
+  margin: 0;
+}
+
+.exposed-filters .form-item label{
+	width: auto;
+	line-height: 28px;
+	padding-right: 3px;
+	color: #979797;
+	font-weight: bold;
+	font-size: .8em;
+	text-transform: uppercase;
+}
+
+.exposed-filters .form-item{
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.exposed-filters .form-actions{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+}
+
+/* Form Actions */
+
+.form-actions {
+	padding: 17px 20px 18px !important;
+}
+
+/* Autocomplete Delux */
+
+.autocomplete-deluxe-values{
+  padding-bottom: 5px;
+}
+
+/* Ctools */
+
+.ctools-button-processed{
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+/* @group VIEWS: Attachment details tabs
+ *
+ * The tabs that switch between sections
+ */
+
+#views-display-menu-tabs{
+  margin: 0;
+}
+
+.views-display-top .secondary-bootstrap {
+  margin-right: 18em;
+}
+
+.views-display-top .secondary-bootstrap > li {
+  margin-right: 6px;
+  padding-left: 0;
+  border-right: 0 none;
+  display: inline-block;
+  float: left; /* LTR */
+  padding: 0;
+}
+
+.views-displays .secondary-bootstrap .open > a {
+  position: relative;
+  z-index: 51;
+}
+
+.views-displays .secondary-bootstrap li.add {
+  position: relative;
+}
+
+.views-displays .secondary-bootstrap .action-list {
+  left: 0; /* LTR */
+  margin: 0;
+  position: absolute;
+  top: 27px;
+  z-index: 50;
+}
+
+.views-displays .secondary-bootstrap .action-list  li {
+  display: block;
+}
+
+.views-display-top .secondary-bootstrap > li:last-child {
+  margin-right: 0;
+}
+
+.views-displays .secondary-bootstrap a {
+  display: inline-block;
+}
+
+.views-displays .secondary-bootstrap a:focus {
+  outline: none;
+}
+
+.views-displays .secondary-bootstrap a:hover,
+.views-displays .secondary-bootstrap .active a {
+}
+
+.views-displays .secondary-bootstrap .open > a {
+}
+
+.views-displays .secondary-bootstrap .open > a:hover {
+}
+
+.views-displays .secondary-bootstrap .action-list  li {
+  background-color: #f1f1f1;
+  border-color: #cbcbcb;
+  border-style: solid;
+  border-width: 0 1px;
+  padding: 2px 9px;
+}
+
+.views-displays .secondary-bootstrap .action-list  li:first-child {
+  border-width: 1px 1px 0;
+}
+
+.views-displays .secondary-bootstrap .action-list  li.last {
+  border-width: 0 1px 1px;
+}
+
+.views-displays .secondary-bootstrap .action-list  li:last-child {
+  border-width: 0 1px 1px;
+}
+
+.views-displays .secondary-bootstrap .action-list input.form-submit {
+}
+
+.views-displays .secondary-bootstrap .action-list li:hover {
+}
+
+/* @end */
+
+/* @group VIEWS: Admin */
+
+.views-display-setting .label{
+  background: none;
+  color: #a9a9a9;
+  text-shadow: none;
+  text-transform: uppercase;
+  font-size: .8em;
+  line-height: 1.8em;
+}
+
+.pager .views-display-setting a{
+  border: none;
+  padding: 0;
+  background-color: none;
+}
+
+.views-ui-display-tab-bucket h3{
+  text-align: left;
+}
+
+.views-ui-dialog #views-ajax-title, .views-ui-dialog .views-override{
+  background: inherit;
+}
+
+.views-ui-dialog .form-buttons{
+  background: inherit;
+  padding: 10px;
+  background-color: #F5F5F5;
+  text-align: right;
+}
+
+.views-ui-dialog .ui-dialog-titlebar{
+  border: none !important;
+  padding: 0 !important;
+}
+
+.views-ui-dialog .ui-dialog-titlebar-close{
+  border: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: none;
+  top: 25px !important;
+}
+
+.views-ui-dialog fieldset{
+  margin-bottom: 0;
+}
+
+.form-submit:not(.js-hide) + .form-submit, .views-admin a.button:not(.js-hide) + a.button{
+  margin: 0;
+}
+
+/* @end */
+
+/* @group VIEWS: Bulk Operations */
+
+.vbo-views-form div.form-type-checkbox{
+  padding: 0;
+}
+
+.vbo-views-form input.vbo-select{
+  margin: 0;
+}
+
+.vbo-views-form .form-actions{
+  display: none;
+}
+
+/* @end */
+
+/* @group NODE: Edit */
+
+.node-form .form-checkboxes .form-type-checkbox{
+  display: inline;
+  padding-right: 10px;
+}
+
+/* @end */
+
+/* @group VIEWS: Exposed */
+
+.views-exposed-form .views-exposed-widgets,
+.views-exposed-form .views-exposed-widget .form-submit{
+  margin: 0;
+}
+
+.views-exposed-form .views-exposed-widget{
+  float: none;
+  padding: 0;
+  display: inline;
+}
+
+/* @end */
+
+/* @group EDITABLE FIELDS */
+
+.editablefield-item label{
+  float: left;
+  padding-right: 2px;
+}
+
+.editablefield-item .form-item, 
+.editablefield-item .form-actions{
+  padding: 0;
+}
+
+.editablefield-item span.autocomplete-deluxe-value-delete{
+  float: none;
+}
+
+.editablefield-item .form-actions{
+  display: block;
+  border: none;
+  background: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.editablefield-item .form-wrapper{
+  display: inline-block;
+}
+
+.editablefield-item .autocomplete-deluxe-values{
+  display: block;
+}
+
+.editablefield-item .ajax-progress{
+  position: absolute;
+  top: 1px;
+  right: 0;
+ overflow: hidden;
+  width: 20px;
+  height: 20px;
+}
+
+.editablefield-item .modal .ajax-progress{
+  top: 15px;
+  right: 15px;
+}
+
+.views-field-editablefield .editablefield-item{
+  position: relative;
+}
+
+.views-field-editablefield .field{
+  margin-left: 30px;
+}
+
+.views-field-editablefield .editablefield-edit{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* @end */
+
+/* @group FIELD: Date */
+
+.container-inline-date{
+  display: inline;
+}
+
+.container-inline-date label{
+  float: left;
+  padding-right: 5px;
+  padding-top: 28px;
+  font-weight: 200;
+  color: #939393;
+}
+
+.container-inline-date label .form-required{
+}
+
+.container-inline-date .date-padding{
+  padding: 0;
+}
+
+.container-inline-date .form-item .form-item label{
+  float: none;
+  font-size: 1em;
+  padding: 0;
+  font-weight: bold;
+  color: #000;
+}
+
+.container-inline-date .form-type-date-popup{
+  margin: 0;
+}
+
+/* @end */
+
+/* Crud Associate Services grid */
+
+.node-form #edit-field-services-und .form-type-checkbox {
+	display: inline-block;
+	width: 20%;
+}

@@ -1,0 +1,558 @@
+/* ================ Profile Global Styles ================ */
+
+.action-links {
+  display: none;
+}
+
+.node-profile {
+  position: relative;
+}
+
+.node-profile.splash-image {
+  margin-top: -40px;
+}
+
+.node-profile .row-fluid {
+  border-bottom: 1px solid #ccc;
+  @include box-shadow(0 1px 0 #fff);
+  margin: 0 -40px 40px;
+  padding: 0 0 50px;
+  width: auto;
+}
+
+.node-profile.splash-image .member-top-info.row-fluid {
+	border: none;
+}
+
+.node-profile .row-fluid > div {
+  padding: 0 40px;
+  *width: 625px;
+}
+
+.node-profile .row-fluid h3.title {
+  margin: 0 0 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.node-profile .row-fluid h3.title > i {
+  margin: 0 3px 0 0;
+  color: #bbb;
+}
+
+
+/* ================ Share and Save ================ */
+
+.fb-social-like-plugin{
+  float:right;
+}
+
+.fb-social-like-plugin .fb-like {
+  height:23px;
+  width:80px;
+  *width:70px;
+  overflow:hidden;
+  padding:2px 0 0 5px;
+}
+
+
+/* ================ Share Header ================ */
+
+.member-top-social {
+  background: #eee;
+  border-bottom: 1px solid #ccc;
+  @include box-shadow(0 1px 0 #fff);
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  height: 38px;
+  width: 675px;
+  padding: 12px 15px 0;
+  z-index:99;
+}
+
+.splash-image .member-top-social {
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.75);
+  border-bottom: none;
+  @include box-shadow(none);
+}
+
+.no-rgba .splash-image .member-top-social {
+  background: url(../images/backgrounds/bg_black-75-ie.png) repeat 0 0;
+}
+
+.member-top-social ul{
+  padding:0;
+  margin:0;
+  float:right;
+}
+
+.member-top-social li{
+  float:left;
+  list-style-type: none;
+  padding-left:10px;
+  line-height: 23px;
+}
+
+.member-top-social li.member-top-social-like{
+  width: 185px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.node-type-remodeler .member-top-social li.member-top-social-like {
+	width: 210px;
+}
+
+.member-top-social div.info{
+  color:#777;
+  font-size:.9em;
+  font-style: italic;
+  float: left;
+  margin: 2px 0 0;
+}
+
+.splash-image .member-top-social div.info{
+	color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,1);
+}
+
+/* ================ Profile Splash Image ================ */
+
+.field-name-field-splash-image {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  width: 705px;
+  height: 260px;
+  z-index: 1;
+}
+
+.node-profile.splash-image .member-top-info.row-fluid {
+  position: relative;  
+  z-index: 99;
+  height: 135px;
+  padding: 125px 0 0;
+  color: #fff;
+}
+
+.splash-image .member-top-info .page-header,
+.splash-image .member-top-info .field-name-field-phone,
+.splash-image .member-top-info .field-name-field-fax {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  color: #fff;
+}
+
+.splash-image .member-top-info .field-name-field-phone,
+.splash-image .member-top-info .field-name-field-fax {
+  *float: left;
+  *width: 160px;
+}
+
+.splash-image .member-top-info .field-name-field-fax {
+  *margin-right: 160px;
+}
+
+.splash-image .member-top-info .field-name-field-member-website a {
+  color: #41C3D4;
+}
+
+.splash-image .member-top-info .field-name-field-member-website a:hover {
+  color: #fff;
+}
+
+
+/* ================ Info Section LEVEL 1 ================ */
+
+.member-info.row-fluid {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border: none;
+  @include box-shadow(none);
+}
+
+.member-info .member-name {
+  background: #fff;
+  @include border-radius(5px);
+  @include box-shadow(0 5px 20px rgba(0,0,0,0.1));
+  padding: 40px;
+}
+
+.no-rgba .member-info .member-name {
+  border: 1px solid #ddd;
+}
+
+.member-info .page-header {
+  font-size: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 0;
+}
+
+.member-info .field {
+  padding: 10px;
+}
+
+.member-info .field .field-label {
+  @include adelle-bold;
+}
+
+.member-info .field .field-item {
+  @include adelle-normal;
+}
+
+.member-info .field .field-items {
+  float: right;
+  width: 430px;
+  font-size: 14px;
+}
+
+.member-info .field-name-field-address .country {
+  display: none;
+}
+
+
+/* ================ Top Info Section LEVEL 2 or 3 ================ */
+
+.member-top-info.row-fluid {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.member-top-info .field-name-field-company-logo {
+  float: left;
+  width: 110px;
+  height: auto;
+  margin: 0 15px 0 0;
+  border: 3px solid #fff;
+  @include box-shadow(0 1px 2px rgba(0,0,0,0.2));
+}
+
+.member-top-info .page-header {
+  font-size: 25px;
+  margin: 8px 0 5px;
+  display: inline-block;
+}
+
+.member-top-info .field-name-field-phone,
+.member-top-info .field-name-field-fax,
+.member-top-info .field-name-field-member-website {
+  @include inline-block;
+  margin: 0 10px 0 0;
+}
+
+.member-top-info .field-name-field-phone .field-label,
+.member-top-info .field-name-field-fax .field-label {
+  @include adelle-bold;
+}
+
+.member-top-info .field-name-field-phone .field-item,
+.member-top-info .field-name-field-fax .field-item,
+.member-top-info .field-name-field-member-website .field-item {
+  @include adelle-normal;
+}
+
+.member-top-info .field-name-field-member-website .field-item i {
+  font-size: 12px;
+}
+
+.member-top-info .social-media {
+  margin: 8px 0 0;
+  *width: 400px;
+  *zoom: 1;
+}
+
+.member-top-info .social-media > .field {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  line-height: 1.1;
+}
+
+.member-top-info .social-media > .field {
+  *display: block;
+  *float: left;
+}
+
+.member-top-info .social-media a {
+  background: #ddd;
+  display: block;
+  font-family: SocialicoRegular;
+  font-size: 30px;
+  color: rgba(0,0,0,0.4);
+  text-align: center;
+  @include transition-duration(0.5s);
+  @include border-radius(5px);
+  @include box-shadow(0 1px 0 rgba(0,0,0,0.2));
+  width: 30px;
+  height: 30px;
+}
+
+.splash-image .member-top-info .social-media a {
+	background: #fff;
+}
+
+.member-top-info .social-media a:hover {
+  text-decoration: none;
+}
+
+.member-top-info .social-media .field-name-field-facebook-link a:hover {
+  color: #3B5998;
+}
+
+.member-top-info .social-media .field-name-field-twitter-link a:hover {
+  color: #00B3F1;
+}
+
+.member-top-info .social-media .field-name-field-youtube-link a:hover {
+  color: #C9322C;
+}
+
+.member-top-info .social-media .field-name-field-flickr-link a:hover {
+  color: #FF0084;
+}
+
+aside .view-company-home-archive .pager {
+  margin-top: 10px;
+}
+
+aside .view-company-home-archive .pager li.pager-first.first,
+aside .view-company-home-archive .pager li.pager-last.last {
+  display: none;
+}
+
+aside .view-company-home-archive .pager li.pager-current,
+aside .view-company-home-archive .pager a {
+  font-size: 11px;
+  padding: 3px 8px;
+  line-height: 22px;
+}
+
+aside .view-company-home-archive .pager .throbber {
+  display: none;
+}
+
+
+/* ================ Gallery Section ================ */
+
+.node-profile .member-gallery.row-fluid {
+  background: #eee;
+  @include box-shadow(rgba(0,0,0,0.1) 0 1px 2px inset);
+  margin-top: -40px;
+  padding-top: 15px;
+  padding-bottom: 35px;
+}
+
+.member-gallery .field-name-field-images {
+  margin: 0 0 0 40px;
+}
+
+.member-gallery .field-name-field-images .bx-window {
+  padding: 2px 0 4px;
+}
+
+.member-gallery .field-name-field-images .field-item {
+  float: left;
+  margin: 0;
+  width: 80px;
+}
+
+.member-gallery .field-name-field-images .field-item.pager a {
+  background: #111;
+  border: none;
+  @include border-radius(0px);
+  padding: 0;
+  margin: 0 15px 0 0;
+  display: block;
+}
+
+.member-gallery .field-name-field-images .field-item.pager a img {
+  @include transition-duration(0.2s);
+}
+
+.member-gallery .field-name-field-images .field-item.pager a img:hover {
+  @include box-shadow(0 1px 2px rgba(0,0,0,0.75));
+  @include opacity(0.7);
+}
+
+.member-gallery .field-name-field-images .bx-wrapper > a {
+  position: absolute;
+  display: block;
+  font-size: 35px;
+  color: #bbb;
+  @include transition-duration(0.5s);
+}
+
+.member-gallery .field-name-field-images .bx-wrapper > a:hover {
+  text-decoration: none;
+  color: #444;
+}
+
+.member-gallery .field-name-field-images .bx-wrapper a.bx-prev {
+  top: 8px;
+  left: -40px;
+}
+
+.member-gallery .field-name-field-images .bx-wrapper a.bx-next {
+  top: 8px;
+  right: -25px;
+}
+
+
+/* ================ Detail Section ================ */
+
+.member-details .list {
+  margin: 30px 0 0;
+}
+
+.member-details .list > div {
+  border-bottom: 1px dotted #ccc;
+  padding: 20px 0;
+}
+
+.member-details .list > div:first-child {
+  border-top: 1px dotted #ccc;
+}
+
+.member-details .list .field-label {
+  @include adelle-normal;
+  font-size: 13px;
+  text-transform: uppercase;
+  width: 140px;
+}
+
+.member-details .list .field-items {
+  float: right;
+  width: 470px;
+  font-size: 14px;
+}
+
+.member-details .list .field-items .country {
+  display: none;
+}
+
+.member-details .list .field-name-field-awards .form-options-icon > span {
+  display: none;
+}
+
+
+/* ================ Testimonial Section ================ */
+
+.member-testimony .field-collection-container {
+  border: none;
+  margin: 0;
+}
+
+.field-name-field-testimony > .field-items {
+  overflow: hidden;
+}
+
+.field-name-field-testimony > .field-items > .field-item {
+  position: relative;
+  margin: 0;
+  padding: 15px 30px 15px 80px;
+  border-bottom: 1px dotted #ccc;
+}
+
+.field-name-field-testimony > .field-items > .field-item.even {
+  background: #eee;
+}
+
+.field-name-field-testimony > .field-items > .field-item.odd {
+  background: url(../images/backgrounds/bg_testimonial-quotes-odd.png) no-repeat 0 0;
+}
+
+.field-name-field-testimony > .field-items > .field-item:first-child {
+  border-top: 1px dotted #ccc;
+}
+
+.field-name-field-testimony .field-items > .field-item:last-child {
+  margin-bottom: 0;
+}
+
+.field-name-field-testimony .field-items .field-item .field-name-field-plaintext {
+  font-family: Georgia, sans-serif;
+  font-style: italic;
+  margin: 0 0 10px;
+}
+
+.field-name-field-testimony .field-items .field-item .field-name-field-byline {
+  @include adelle-normal;
+  font-size: 13px;
+  text-align: right;
+  color: #777;
+}
+
+.field-name-field-testimony .field-items .field-item .field-name-field-byline .field-item:before {
+  content: "~ ";
+}
+
+.field-name-field-testimony .field-collection-view {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+
+/* ================ Email Section ================ */
+
+.node-profile .member-email.row-fluid {
+  background: #eee;
+  margin-top: -40px;
+  margin-bottom: -40px;
+  border-bottom: none;
+  padding: 40px 0;
+}
+
+.member-email .field-name-field-email h3 {
+  @include adelle-normal;
+  font-size: 20px;
+}
+
+.member-email .modal-body {
+  padding: 15px 0;
+  max-height: none;
+  overflow: visible;
+}
+
+.member-email .modal-footer {
+  background: none;
+  padding: 14px 0 0;
+}
+
+.member-email .field-name-field-email .rel-register-link {
+  display: none;
+}
+
+.member-email .field-name-field-email .control-group {
+  margin: 0 0 10px;
+}
+
+.member-email .field-name-field-email .control-label {
+  @include adelle-normal;
+  text-transform: uppercase;
+  font-size: 13px;
+  float: left;
+  width: 175px;
+  padding: 0 20px 0 0;
+  text-align: right;
+}
+
+.member-email .field-name-field-email .control-group input.form-text {
+  width: 420px;
+}
+
+.member-email .field-name-field-email .control-group textarea {
+  width: 430px;
+}
+
+.member-email .field-name-field-email .control-group .grippie {
+  width: 428px;
+  float: right;
+}
+
+.node-profile .member-email .rel-register-link {
+  display: none;
+}

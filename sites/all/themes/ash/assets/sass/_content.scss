@@ -1,0 +1,121 @@
+/* ================ General Content ================ */
+
+h1, h2, h3, h4, h5, h6 {
+  @include myriad-bold;
+  color: #111;
+}
+
+.page-header {
+  @include adelle-normal;
+  font-size: 35px;
+  line-height: 1.2;
+  border: none;
+  margin: 0 0 30px;
+}
+
+.popover-content p:first-child{
+	margin-top:0;
+}
+
+.dip{
+	background:#fff;
+	border:1px solid #DDDDDD;
+	padding:15px;
+	@include border-radius(3px);
+}
+
+.dip.tab-content{
+	margin-top:-9px;
+	border-top:none;
+	@include border-radius(0 0 3px 3px);
+}
+
+.flag-favorite i{
+	color:#B94A48;
+}
+
+.form-type-bef-link{
+	float:left;
+	padding-right:1px;
+}
+
+dt{
+	line-height:inherit;
+}
+
+img.float-left{
+	float:left;
+	margin: 5px 20px 20px 0;
+}
+
+img.float-right{
+	float:right;
+	margin: 5px 0 20px 20px;
+}
+
+img.center{
+	margin:0 auto;
+	display:block;
+}
+
+img.inline-image{
+  @include box-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+.main-content footer .links.inline {
+  @include border-radius(4px);
+  background-color: #DFF0D8;
+  border: 1px solid #D6E9C6;
+  color: #468847;
+  margin: 0;
+  padding: 15px;
+  font-style: italic;
+}
+
+.main-content footer .links.inline li {
+  list-style: none;
+  list-style-image: none;
+}
+
+
+/* ================ Contact Form ================ */
+
+.webform-client-form {
+  margin-top: 30px;
+}
+
+.webform-client-form .form-item {
+  margin-bottom: 10px;
+}
+
+.webform-client-form .form-item .form-required {
+  color: #A52720;
+}
+
+.webform-client-form .webform-container-inline .control-label,
+.webform-client-form .webform-component-textarea .control-label,
+.webform-client-form .captcha .control-label {
+  width: 140px;
+  @include inline-block;
+  margin-right: 1em;
+}
+
+.webform-client-form .webform-component-textarea .form-textarea-wrapper,
+.webform-client-form .captcha .controls {
+  @include inline-block;
+}
+
+.webform-client-form .captcha .controls {
+  margin-top: 15px;
+}
+
+.webform-client-form .captcha .help-block {
+  font-size: 11px;
+  font-style: italic;
+  color: #777;
+  margin: 0;
+}
+
+.webform-client-form .rel-register-link {
+  display: none;
+}

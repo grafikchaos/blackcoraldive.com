@@ -1,0 +1,171 @@
+/* ================ Single Page Styles ================ */
+
+.submitted {
+  @include adelle-normal;
+  color: #777;
+}
+
+.field-name-field-featured-image {
+  margin: 0 0 30px;
+}
+
+.field-name-field-featured-image img {
+  @include box-shadow(0 2px 5px rgba(0,0,0,0.3));
+}
+
+
+/* Gallery Image */
+
+.blog-gallery.row-fluid {
+  margin: 50px -40px;
+  padding: 20px 0 40px;
+  background: #eee;
+  @include box-shadow(#fff 0 1px 0, rgba(0,0,0,0.1) 0 1px 2px inset);
+  border-bottom: 1px solid #ccc;
+  width: auto;
+}
+
+.blog-gallery.row-fluid .span12 {
+  padding: 0 40px;
+}
+
+.field-name-field-gallery-images .field-items:after {
+  @include clearafter;
+}
+
+.field-name-field-gallery-images .field-items .field-item {
+  float: left;
+  margin: 0;
+  width: 78px;
+}
+
+.field-name-field-gallery-images .field-items .field-item a {
+  background: #111;
+  border: none;
+  @include border-radius(0px);
+  padding: 0;
+  margin: 0 15px 15px 0;
+  display: block;
+}
+
+.field-name-field-gallery-images .field-items .field-item a img {
+  @include transition-duration(0.2s);
+}
+
+.field-name-field-gallery-images .field-items .field-item a img:hover {
+  @include box-shadow(0 1px 2px rgba(0,0,0,0.75));
+  @include opacity(0.7);
+}
+
+.blog-gallery.row-fluid h3.title {
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+}
+
+.blog-gallery.row-fluid{clear:both;}
+
+.blog-gallery.row-fluid h3.title > i {
+  color: #bbb;
+  margin: 0 3px 0 0;
+}
+
+
+/* ================ Comment Styles ================ */
+
+#comments > h2.title {
+  border-bottom: 1px solid #ccc;
+  @include box-shadow(0 1px 0 #fff);
+}
+
+#comments .comment {
+  margin: 20px 0;
+  clear: both;
+}
+
+#comments .user-picture {
+  float: left;
+  width: 15%%;
+}
+
+#comments .user-picture img {
+  @include box-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+#comments .comment-content {
+  float: right;
+  width: 85%;
+  border-left: 1px dotted #ccc;
+}
+
+#comments .comment-content header {
+  margin: 0 0 8px;
+}
+
+#comments .comment-content header,
+#comments .comment-content .field-name-comment-body {
+  padding: 0 0 0 20px;
+}
+
+#comments .comment-content header h3 {
+  line-height: 1.2;
+}
+
+#comments .comment-content header h3 a:hover {
+  text-decoration: none;
+}
+
+#comments .comment-content header .submitted {
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+#comments .comment-content header .submitted a.permalink {
+  font-size: 11px;
+  font-style: italic;
+  margin: 0 0 0 5px;
+}
+
+#comments .links.inline {
+  clear: both;
+  text-align: right;
+  margin: 0;
+}
+
+#comments .links.inline li {
+  display: inline;
+  font-size: 12px;
+  font-style: italic;
+}
+
+#comments .indented {
+  margin: -15px 0 30px 40px;
+  padding: 10px 20px;
+  background: lighten(#41C3D4, 40%);
+}
+
+#comments .indented > .comment {
+  margin: 0;
+}
+
+#comments p.help-block {
+  font-size: 11px;
+  font-style: italic;
+  margin-top: -5px;
+}
+
+#comments #edit-comment-body-und-0-format {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
+  color: #888;
+  font-size: 12px;
+  font-style: italic;
+  padding: 0 20px 10px;
+  margin: 0 0 20px;
+}
+
+#comments .markItUp{
+  width:580px;
+}

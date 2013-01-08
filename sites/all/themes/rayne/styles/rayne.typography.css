@@ -1,0 +1,170 @@
+/**
+ * @file
+ * Typography styles.
+ */
+
+/* General */
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.4;
+  font-size: 100%;
+}
+
+#page {
+  font-size: 75%;
+}
+
+#page-title{
+  margin-bottom: 20px;
+  float: left;
+}
+
+em, i {
+  font-style: italic;
+}
+
+strong, b,
+label {
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+address {
+  font-style: normal;
+  margin-bottom: 1.5em;
+}
+
+blockquote {
+  margin-bottom: 1.5em;
+  padding-left: 20px;
+  font-style: italic;
+  border-left: 5px solid #E6E6E6;
+}
+
+.btn a{
+  color: #333333;
+}
+
+.btn-action a, .btn-danger a, .btn-warning a, .btn-success a ,.btn-info a ,.btn-inverse a{
+  color: #fff;
+}
+
+input, textarea, select, .uneditable-input{
+  margin-bottom: 0;
+}
+
+/* Global Alert Messages */
+
+.alert-status {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert [class^="icon-"]:before, .alert [class*=" icon-"]:before {
+	font-size: 0.7em;
+}
+
+/* Lists */
+
+ul, ol,
+.item-list ul {
+}
+
+ul.inline,
+ul.tabs {
+  padding-left: 0;
+}
+
+ul ul,
+ol ol {
+  margin-bottom: 0;
+}
+
+li,
+.item-list ul li,
+ul.menu li {
+}
+
+ul.vertical-tabs-list li {
+  list-style-type: none;
+}
+
+/* Tables */
+
+#page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0;
+}
+
+th, td {
+  padding: 5px 10px;
+}
+
+thead {
+	font-size: .8em;
+	text-transform: uppercase;
+}
+
+thead th {
+  border-bottom: none;
+}
+
+table.sticky-header {
+	-webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+	box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+table.sticky-header th {
+	padding: 20px 8px;
+	border-left: 1px solid #ddd;
+	font-weight: bold;
+}
+
+/* Code */
+
+code, pre {
+  font-family: Monaco, "Lucida Console", monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: auto;
+  margin-bottom: 1.5em;
+}
+
+/* @group Headings */
+
+h2{
+  color: #838383;
+}
+
+/* @end */
+
+/* @group Well */
+
+.well h3,
+.well label,
+.well .description{
+  text-shadow: #fff 0 1px 0;
+}
+
+.well h3{
+  padding-bottom: 10px;
+  color: #838383;
+}
+
+.well label{
+  color: #a1a1a1;
+  font-size: .9em;
+}
+
+/* @end */

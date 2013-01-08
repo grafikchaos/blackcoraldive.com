@@ -1,0 +1,114 @@
+/* ================ Login Page ================ */
+
+.toboggan-unified #login-message {
+	@include adelle-normal;
+	color: #888;
+	line-height: 4;
+	background: url(../images/icons/icon_login-key.png) no-repeat 255px center;
+}
+
+.toboggan-unified #login-links a {
+	@include adelle-normal;
+	color: #bbb;
+	font-size: 18px;
+	padding: 19px 50px;
+}
+
+.toboggan-unified #login-links a:hover {
+	color: #111;
+	text-decoration: none;
+}
+
+.toboggan-unified #login-links a.login-link {
+	border: none;
+	background: none;
+}
+
+.toboggan-unified #login-links a.login-link.lt-active {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-bottom: none;
+	color: #111;
+}
+
+.toboggan-unified #login-form,
+.toboggan-unified #register-form {
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 60px 40px 40px;
+}
+
+.toboggan-unified #user-login > div:after,
+.toboggan-unified #user-register-form > div:after {
+	@include clearafter;
+}
+
+.toboggan-unified .control-group {
+	float: left;
+	padding: 0;
+	width: 399px;
+}
+
+.toboggan-unified .control-group.form-item-pass,
+.toboggan-unified .control-group.form-item-mail {
+	padding: 0 0 0 45px;
+	width: 354px;
+}
+
+.toboggan-unified .control-group .form-text {
+	width: 340px;
+}
+
+.toboggan-unified .control-label {
+	@include adelle-normal;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+
+.toboggan-unified p.help-block {
+	font-size: 13px;
+	font-style: italic;
+	color: #777;
+	margin-top: -5px;
+}
+
+.toboggan-unified .form-item-name p.help-block {
+	padding-right: 50px;
+}
+
+.toboggan-unified .login-forgot,
+.toboggan-unified .form-wrapper {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 20px;
+	padding-bottom: 20px;
+}
+
+.toboggan-unified .login-forgot {
+	clear: both;
+	padding-left: 445px;
+	text-align: right;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.toboggan-unified .form-wrapper:after {
+	@include clearafter;
+}
+
+.toboggan-unified input.form-submit {
+	float: right;
+}
+
+.toboggan-unified .toboggan-fboath{
+	position:relative;
+}
+
+.toboggan-unified .inner{
+	@include adelle-normal;
+	color: #888;
+	position:absolute;
+	top:-70px;
+	left:40px;
+	font-size:.9em;
+	line-height:normal;
+}

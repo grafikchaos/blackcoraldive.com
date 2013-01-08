@@ -1,0 +1,26 @@
+name = Ash
+description = "August Ash child theme of Twitter Bootstrap"
+version = 1.0
+base theme = "twitter_bootstrap"
+core = 7.x
+
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[callout_one]    = 'Callout One'
+regions[callout_two]    = 'Callout Two'
+regions[callout_three]  = 'Callout Three'
+regions[footer]         = 'Footer'
+
+; BATC Newsroom Subdomain Regions
+regions[batc_header]    = 'BATC Top Bar'
+regions[batc_footer]    = 'BATC Footer'
+
+stylesheets[all][] = assets/css/application.css
+stylesheets-conditional[lt IE 8][all][] = assets/css/_font-awesome-ie7.css
+
+scripts[] = assets/js/ash.js
+; scripts[] = assets/js/ash.slabtext.min.js

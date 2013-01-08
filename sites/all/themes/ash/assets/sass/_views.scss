@@ -1,0 +1,22 @@
+/* VIEW: General */
+
+.view .form-options-icon{
+  padding: 0 0 0 2px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.view .form-options-icon span{
+  display:none;
+}
+
+/* VIEW: Properties */
+
+.view-search-properties td{
+  vertical-align: middle;
+}
+
+.view-search-properties td.views-field-field-property-extras{
+  text-align: right;
+}

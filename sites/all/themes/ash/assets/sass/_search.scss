@@ -1,0 +1,139 @@
+/* ================ Search Page ================ */
+
+.view-search .view-filters {
+  background: #eee;
+  border: 1px solid #ddd;
+  padding: 20px 20px 15px;
+}
+
+.view-search .rel-register-link {
+  display: none;
+}
+
+.view-search .form-type-textfield input.form-text {
+  font-size: 15px;
+  height: auto;
+  line-height: normal;
+  padding: 11px 14px;
+  width: 707px;
+}
+
+.view-search .views-submit-button {
+  padding-right: 0;
+}
+
+.view-search .views-submit-button .form-submit {
+  margin: 0;
+}
+
+.view-search .view-content {
+  margin: 40px 0;
+}
+
+.view-search .view-content > h3 {
+  font-weight: 500;
+  border-top: 1px solid #ddd;
+  line-height: 30px;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-right: 680px;
+}
+
+.view-search .view-content .views-row {
+  padding: 0 0 0 220px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.view-search .view-content .views-row-1 {
+  margin-top: -30px;
+}
+
+.view-search .view-content .views-row .views-field-title {
+  line-height: 30px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.view-search .view-content .views-row-1 .views-field-title {
+  border-top: none;
+  padding-top: 0;
+}
+
+.view-search .view-content .views-row .views-field-title a {
+  @include myriad-bold;
+  font-size: 18px;
+  line-height: 30px;
+  @include transition-duration(0.5s);
+}
+
+.view-search .view-content .views-row .views-field-title a:hover {
+  text-decoration: none;
+}
+
+.view-search .view-content .views-row  .search-content,
+.view-search .view-content .views-row  .views-field-field-home-features {
+  font-size: 13px;
+  color: #777;
+}
+
+.view-search .view-content .views-row .post-date {
+  display: none;
+}
+
+.view-search .view-content .views-row .post-date.newsroom,
+.view-search .view-content .views-row .post-date.blog_entry {
+  display: block;
+  @include adelle-normal;
+  color: #888;
+  font-size: 11px;
+  line-height: 1;
+  position: absolute;
+  top: 12px;
+  left: 105px;
+  text-align: right;
+  width: 105px;
+}
+
+
+/* ================ Holiday Search Page ================ */
+
+.view-holiday .view-filters {
+  background: #eee;
+  border: 1px solid #ddd;
+  padding: 20px 20px 15px;
+  margin-bottom: 40px;
+}
+
+.view-holiday .rel-register-link {
+  display: none;
+}
+
+.view-holiday .form-type-textfield input.form-text {
+  font-size: 15px;
+  height: auto;
+  line-height: normal;
+  padding: 11px 14px;
+  width: 685px;
+}
+
+.view-holiday .views-submit-button {
+  padding-right: 0;
+  margin-top: 27px;
+}
+
+.view-holiday .views-submit-button .form-submit {
+  margin: 0;
+}
+
+.view-holiday .view-content .bing-map.bing-processed {
+  @include box-shadow(0 1px 5px rgba(0,0,0,0.4));
+}
+
+.view-holiday > .view-content {
+  margin-top: 40px;
+}
+
+.view-holiday > .view-content .views-table th {
+  @include adelle-bold;
+}

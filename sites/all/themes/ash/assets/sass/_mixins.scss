@@ -1,0 +1,74 @@
+/* Adelle Font Family */
+
+@mixin adelle-light {
+  font-family: "adelle",serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin adelle-light-italic {
+  font-family: "adelle",serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+@mixin adelle-normal {
+  font-family: "adelle",serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@mixin adelle-normal-italic {
+  font-family: "adelle",serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@mixin adelle-bold {
+  font-family: "adelle",serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin adelle-bold-italic {
+  font-family: "adelle",serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Adelle Font Family */
+
+@mixin myriad-normal {
+  font-family: "myriad-pro",sans-serif;
+font-style: normal;
+font-weight: 400;
+}
+
+@mixin myriad-normal-italic {
+  font-family: "myriad-pro",sans-serif;
+font-style: italic;
+font-weight: 400;
+}
+
+@mixin myriad-bold {
+  font-family: "myriad-pro",sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin myriad-bold-italic {
+  font-family: "myriad-pro",sans-serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Misc */
+
+@mixin clearafter {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
+}
+

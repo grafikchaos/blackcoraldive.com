@@ -1,0 +1,44 @@
+<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+
+  <header class="post-header">
+    <?php print render($title_prefix); ?>
+    <?php if (!$page && $title): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php endif; ?>
+    <?php print render($title_suffix); ?>
+
+    <?php if ($display_submitted): ?>
+      <span class="submitted">
+        <?php print $submitted; ?>
+      </span>
+    <?php endif; ?>
+  </header>
+
+  <?php
+    // Hide comments, tags, and links now so that we can render them later.
+    hide($content['comments']);
+    hide($content['links']);
+    hide($content['field_categories']);
+    hide($content['field_tags']);
+    hide($content['field_gallery_images']);
+    print render($content);
+  ?>
+  
+  <?php if (!empty($content['field_gallery_images']['#items'])): ?>
+    <div class="blog-gallery row-fluid clearfix">
+      <div class="span12">
+        <h3 class="title gallery-title"><i class="icon-camera"></i> Additional Images</h3>
+        <?php print render($content['field_gallery_images']); ?>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <?php if (!empty($content['field_tags']['#items']) || !empty($content['field_categories']['#items'])): ?>
+    <footer class="content-extras">
+      <?php print render($content['field_categories']); ?>
+      <?php print render($content['field_tags']); ?>
+    </footer>
+  <?php endif; ?>
+  <?php print render($content['comments']); ?>
+
+</article> <!-- /.node -->

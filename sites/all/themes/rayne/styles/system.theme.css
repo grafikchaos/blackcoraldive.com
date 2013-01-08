@@ -1,0 +1,184 @@
+form {
+    margin: 0;
+    padding: 0;
+}
+hr {
+    border: 1px solid gray;
+    height: 1px;
+}
+img {
+    border: 0 none;
+}
+table {
+    border-collapse: collapse;
+}
+th {
+    border-bottom: 3px solid #CCCCCC;
+    padding-right: 1em;
+    text-align: left;
+}
+tbody {
+    border-top: 1px solid #CCCCCC;
+}
+tr.even, tr.odd {
+}
+th.active img {
+    display: inline;
+}
+td.active {
+    background-color: #DDDDDD;
+}
+.item-list .title {
+    font-weight: bold;
+}
+.item-list ul {
+}
+.item-list ul li {
+}
+.form-item, .form-actions {
+  padding-bottom: 10px;
+}
+tr.odd .form-item, tr.even .form-item {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom:0;
+    white-space: nowrap;
+}
+.form-item .description {
+    font-size: 0.85em;
+}
+label {
+    display: block;
+    font-weight: bold;
+}
+label.option {
+    display: inline;
+    font-weight: normal;
+}
+.form-checkboxes .form-item, .form-radios .form-item {
+    margin-bottom: 0.4em;
+    margin-top: 0.4em;
+}
+.form-type-radio .description, .form-type-checkbox .description {
+    margin-left: 2.4em;
+}
+input.form-checkbox, input.form-radio {
+    vertical-align: middle;
+}
+.marker, .form-required {
+    color: #FF0000;
+}
+.form-item input.error, .form-item textarea.error, .form-item select.error {
+    border: 2px solid red;
+}
+.more-link {
+    text-align: right;
+}
+.more-help-link {
+    text-align: right;
+}
+.more-help-link a {
+    background: url("/misc/help.png") no-repeat scroll 0 50% transparent;
+    padding: 1px 0 1px 20px;
+}
+.item-list .pager {
+    clear: both;
+    text-align: center;
+}
+.item-list .pager li {
+    background-image: none;
+    display: inline;
+    list-style-type: none;
+    padding: 0.5em;
+}
+.pager-current {
+    font-weight: bold;
+}
+#autocomplete li.selected {
+    background: none repeat scroll 0 0 #0072B9;
+    color: #FFFFFF;
+}
+html.js fieldset.collapsible .fieldset-legend {
+    background: url("/misc/menu-expanded.png") no-repeat scroll 5px 65% transparent;
+    padding-left: 15px;
+}
+html.js fieldset.collapsed .fieldset-legend {
+    background-image: url("/misc/menu-collapsed.png");
+    background-position: 5px 50%;
+}
+.fieldset-legend span.summary {
+    color: #999999;
+    font-size: 0.9em;
+    margin-left: 0.5em;
+}
+tr.drag {
+    background-color: #FFFFF0;
+}
+tr.drag-previous {
+    background-color: #FFFFDD;
+}
+.tabledrag-toggle-weight {
+    font-size: 0.9em;
+}
+body div.tabledrag-changed-warning {
+    margin-bottom: 0.5em;
+}
+tr.selected td,
+tr.ajax-changed td {
+    background: none repeat scroll 0 0 #FFFFCC;
+}
+td.checkbox, th.checkbox {
+    text-align: center;
+}
+table td.views-align-center,
+table th.views-align-center{
+  text-align: center;
+}
+table td.views-align-right,
+table th.views-align-right{
+  text-align: right;
+}
+.progress .bar {
+    border: none;
+}
+
+/* @group Views */
+
+.table td.views-align-left {
+    text-align: left;
+}
+.table td.views-align-right {
+    text-align: right;
+}
+/* General View */
+#edit-display-settings-top {
+	padding-bottom: 8px;
+}
+.views-display-column > .ctools-toggle.ctools-toggle-collapsed {
+	margin-top: 15px;
+}
+.views-display-column > .ctools-toggle {
+	margin-top: 18px;
+}
+.views-filterable-options .filterable-option .form-type-checkbox {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.views-filterable-options .even .form-type-checkbox {
+	background-color: #f8f8f8;
+}
+#preview-submit-wrapper {
+	margin-top: 4px;
+}
+th.views-field-status,
+td.views-field-status,
+th.views-field-field-ad-status,
+td.views-field-field-ad-status{
+  width: 30px;
+  text-align: center;
+}
+td.views-field-views-bulk-operations{
+  width: 20px;
+}
+
+/* @end */

@@ -1,0 +1,52 @@
+/* ================ Default Styles ================ */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #555;
+}
+
+.maintenance-page {
+  margin: 0;
+}
+
+.maintenance-page #page-wrapper {
+  background: url(../images/backgrounds/bg_black-6-ie.png) repeat 0 0;
+  background: rgba(0,0,0,0.6);
+  margin: 0 auto;
+  padding: 20px;
+  width: 960px;
+  position: relative;
+  top: 100px;
+}
+
+.maintenance-page #page-wrapper #page {
+  background: #f9f9f9;
+  @include box-shadow(0 0 8px rgba(0,0,0,0.75));
+  padding: 40px;
+}
+
+.maintenance-page #page-wrapper #header {
+  padding: 0;
+}
+
+.maintenance-page #site-name {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.maintenance-page #site-name a {
+  display: block;
+  width: 150px;
+  height: 74px;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999em;
+  overflow: hidden;
+  background: url(../../logo.png) no-repeat 0 0;
+  
+}
+
+.maintenance-page .page-title {
+  @include adelle-normal;
+}
