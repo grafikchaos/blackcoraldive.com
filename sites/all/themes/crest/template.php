@@ -32,7 +32,7 @@ function crest_preprocess_html(&$vars) {
 
   // Remove any HTML from page title
   $vars['head_title'] = strip_tags(html_entity_decode($vars['head_title']));
-  
+
   // Add to the array of body classes
   // layout classes
   $vars['classes_array'][] = 'layout-'. (!empty($vars['page']['sidebar_first']) ? 'first-main' : 'main') . (!empty($vars['page']['sidebar_second']) ? '-second' : '');
@@ -50,9 +50,9 @@ function crest_preprocess_page(&$vars) {
   $vars['classes_array'][] = 'container-fluid';
   $vars['classes_row'] = 'row-fluid';
   $vars['classes_sidebar'] = '';
-  $vars['powered_by'] = '<span>Ashen</span> Rayne';
-  $vars['powered_url'] = 'http://www.ashenrayne.com';
-  
+  $vars['powered_by'] = '<span>Grafikchaos</span>';
+  $vars['powered_url'] = 'http://www.grafikchaos.com';
+
   if(!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])){
     // Two sidebars
     $vars['sidebar_span'] = 3;
@@ -84,16 +84,16 @@ function crest_preprocess_page(&$vars) {
  *   An array of variables to pass to the theme template.
  */
 function crest_preprocess_node(&$vars) {
-  
+
   // Allow for custom templates by view mode
-  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode']; 
-  $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__' . $vars['view_mode']; 
-  
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['node']->type . '__' . $vars['view_mode'];
+
   $vars['classes_array'][] = $vars['zebra'];
   if ($vars['view_mode'] == 'full') {
     $vars['classes_array'][] = 'node-full';
   }
-  
+
   // Add node-type-page template suggestion
   if ($vars['page']) {
     $vars['theme_hook_suggestions'][] = 'node__'. $vars['node']->type .'_page';
@@ -147,7 +147,7 @@ function crest_preprocess_block(&$vars) {
  *   An array of variables to pass to the theme template.
  */
 function crest_preprocess_comment(&$vars) {
-  // Add odd/even classes to comments classes_array 
+  // Add odd/even classes to comments classes_array
   static $comment_odd = TRUE;
   $vars['classes_array'][] = $comment_odd ? 'odd' : 'even';
   $comment_odd = !$comment_odd;
@@ -377,13 +377,13 @@ function crest_pager($vars) {
   if ($pager_total[$element] > 1) {
     if ($li_first) {
       $items[] = array(
-        'class' => array('pager-first'), 
+        'class' => array('pager-first'),
         'data' => $li_first,
       );
     }
     if ($li_previous) {
       $items[] = array(
-        'class' => array('pager-previous'), 
+        'class' => array('pager-previous'),
         'data' => $li_previous,
       );
     }
@@ -392,7 +392,7 @@ function crest_pager($vars) {
     if ($i != $pager_max) {
       if ($i > 1) {
         $items[] = array(
-          'class' => array('pager-ellipsis'), 
+          'class' => array('pager-ellipsis'),
           'data' => '<a onclick="return false;" href="#">…</a>',
         );
       }
@@ -400,26 +400,26 @@ function crest_pager($vars) {
       for (; $i <= $pager_last && $i <= $pager_max; $i++) {
         if ($i < $pager_current) {
           $items[] = array(
-            'class' => array('pager-item'), 
+            'class' => array('pager-item'),
             'data' => theme('pager_previous', array('text' => $i, 'element' => $element, 'interval' => ($pager_current - $i), 'parameters' => $parameters)),
           );
         }
         if ($i == $pager_current) {
           $items[] = array(
-            'class' => array('pager-current active'), 
+            'class' => array('pager-current active'),
             'data' => "<a href=\"#\">$i</a>",
           );
         }
         if ($i > $pager_current) {
           $items[] = array(
-            'class' => array('pager-item'), 
+            'class' => array('pager-item'),
             'data' => theme('pager_next', array('text' => $i, 'element' => $element, 'interval' => ($i - $pager_current), 'parameters' => $parameters)),
           );
         }
       }
       if ($i < $pager_max) {
         $items[] = array(
-          'class' => array('pager-ellipsis disabled'), 
+          'class' => array('pager-ellipsis disabled'),
           'data' => '<a onclick="return false;" href="#">…</a>',
         );
       }
@@ -427,13 +427,13 @@ function crest_pager($vars) {
     // End generation.
     if ($li_next) {
       $items[] = array(
-        'class' => array('pager-next'), 
+        'class' => array('pager-next'),
         'data' => $li_next,
       );
     }
     if ($li_last) {
       $items[] = array(
-        'class' => array('pager-last'), 
+        'class' => array('pager-last'),
         'data' => $li_last,
       );
     }
@@ -729,9 +729,9 @@ function crest_button($vars) {
   }
 
   $field_prefix = isset($element['#field_prefix']) ? $element['#field_prefix'] : '';
-  
 
-  
+
+
   // Some elements do not work as buttons
   $skip = false;
   if(isset($element['#op']) && $element['#op'] == 'refresh_table') $skip = true;
@@ -825,7 +825,7 @@ function crest_links($variables) {
         // is a string.
         $heading = array(
           'text' => $heading,
-          // Set the default level of the heading. 
+          // Set the default level of the heading.
           'level' => 'h2',
         );
       }

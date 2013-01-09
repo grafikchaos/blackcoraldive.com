@@ -56,18 +56,18 @@
  * @see template_process()
  *
  * <?php print render($page['Region_Name']); ?>
- * 
+ *
  */
 ?>
 
 <div id="page-wrapper" class="<?php print $classes; ?>">
   <div id="page" class="<?php print $classes; ?>">
 
-    <?php /////////////// REGION: Header ?> 
+    <?php /////////////// REGION: Header ?>
     <?php print render($page['header']); ?>
-    
+
     <div id="main-wrapper" class="<?php print $classes_row; ?>">
-          
+
       <?php /////////////// FIRST SIDEBAR ?>
       <?php if ($page['sidebar_first']): ?>
         <div id="sidebar-first" class="sidebar span<?php print $sidebar_span.$classes_sidebar; ?>">
@@ -78,23 +78,7 @@
       <div id="content-wrapper" class="span<?php print $content_span; ?>">
         <div id="content" class="clearfix">
 
-          <?php /////////////// TABS ?>
-          <?php if (!empty($tabs['#primary'])): ?>
-            <div id="content-tabs" class="clearfix pull-right">
-              <?php print render($tabs); ?>
-            </div><!-- #sidebar-first -->
-          <?php endif; ?>
-                         
-          <?php /////////////// TITLE ?> 
-          <?php if ($title): ?>
-            <div class="page-header">
-              <?php print render($title_prefix); ?>
-              <h1 id="page-title"><?php print $title; ?></h1>
-              <?php print render($title_suffix); ?>
-            </div>
-          <?php endif; ?>
-
-          <?php /////////////// BREADCRUMBS ?> 
+          <?php /////////////// BREADCRUMBS ?>
           <?php if ($breadcrumb || $shortcut_add_remove): ?>
             <div id="breadcrumb">
               <div class="breadcrumb">
@@ -104,24 +88,41 @@
             </div><!-- /breadcrumb -->
           <?php endif; ?>
 
-          <?php /////////////// MESSAGES ?> 
+          <?php /////////////// MESSAGES ?>
           <?php if ($messages): ?>
             <?php print $messages; ?>
           <?php endif; ?>
 
-          <?php /////////////// HELP ?> 
+          <?php /////////////// TABS ?>
+          <?php if (!empty($tabs['#primary'])): ?>
+            <div id="content-tabs" class="clearfix pull-right">
+              <?php print render($tabs); ?>
+            </div><!-- #sidebar-first -->
+          <?php endif; ?>
+
+          <?php /////////////// TITLE ?>
+          <?php if ($title): ?>
+            <div class="page-header">
+              <?php print render($title_prefix); ?>
+              <h1 id="page-title"><?php print $title; ?></h1>
+              <?php print render($title_suffix); ?>
+            </div>
+          <?php endif; ?>
+
+
+          <?php /////////////// HELP ?>
           <?php if ($page['help']): ?>
             <div class="alert alert-info">
               <?php print render($page['help']); ?>
             </div>
           <?php endif; ?>
-                          
-          <?php /////////////// ACTION LINKS ?> 
+
+          <?php /////////////// ACTION LINKS ?>
           <?php if ($action_links): ?>
             <ul class="action-links"><?php print render($action_links); ?></ul>
           <?php endif; ?>
-              
-          <?php /////////////// CONTENT ?> 
+
+          <?php /////////////// CONTENT ?>
           <?php if ($page['content']): ?>
             <?php print render($page['content']); ?>
           <?php endif; ?>
@@ -138,8 +139,8 @@
 
     </div><!-- #main-wrapper -->
 
-    <?php /////////////// REGION: Footer ?> 
+    <?php /////////////// REGION: Footer ?>
     <?php //print render($page['footer']); ?>
-   
+
   </div><!-- #page -->
 </div><!-- #page-wrapper -->
