@@ -1,11 +1,2 @@
-@import "layout";
-@import "tables";
-@import "views";
-@import "forms";
-@import "nav";
-@import "vertical_tabs";
-@import "blocks";
-@import "modals";
-@import "entity";
-@import "misc";
-@import "typography";
+@import "layout", "tables", "views", "forms", "nav", "lists", "image_styles";
+@import "vertical_tabs", "blocks", "modals", "entity", "misc", "typography";

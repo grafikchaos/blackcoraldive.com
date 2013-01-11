@@ -11,12 +11,15 @@ stylesheets[all][] = assets/sass/_tables.scss
 stylesheets[all][] = assets/sass/_views.scss
 stylesheets[all][] = assets/sass/_forms.scss
 stylesheets[all][] = assets/sass/_nav.scss
+stylesheets[all][] = assets/sass/_lists.scss
+stylesheets[all][] = assets/sass/_image_styles.scss
 stylesheets[all][] = assets/sass/_vertical_tabs.scss
 stylesheets[all][] = assets/sass/_blocks.scss
 stylesheets[all][] = assets/sass/_modals.scss
 stylesheets[all][] = assets/sass/_entity.scss
 stylesheets[all][] = assets/sass/_misc.scss
 stylesheets[all][] = assets/sass/_typography.scss
+
 
 ; Scripts
 scripts[] = assets/js/script.js
