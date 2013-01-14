@@ -3,7 +3,7 @@
 Drupal.behaviors.crest = {
   attach: function (context, settings) {
   }
-}
+};
 
 
 Drupal.behaviors.crestFilters = {
@@ -18,14 +18,13 @@ Drupal.behaviors.crestFilters = {
       });
     });
   }
-}
+};
 
 /**
-* Views admin helper
-*
-* @TODO Add to a seperate javascript file that only gets loaded on demand
-*/
-
+ * Views admin helper
+ *
+ * @TODO Add to a seperate javascript file that only gets loaded on demand
+ */
 Drupal.behaviors.viewsUiRenderAddViewButton = Drupal.behaviors.viewsUiRenderAddViewButton || {};
 Drupal.behaviors.viewsUiRenderAddViewButton.attach = function (context, settings) {
   // Build the add display menu and pull the display input buttons into it.
@@ -94,7 +93,7 @@ Drupal.behaviors.verticalTabs = {
 
       // Check if there are some fieldsets that can be converted to vertical-tabs
       var $fieldsets = $('> fieldset', this);
-      if ($fieldsets.length == 0) {
+      if ($fieldsets.length === 0) {
         return;
       }
 
