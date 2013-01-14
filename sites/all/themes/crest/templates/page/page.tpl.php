@@ -71,7 +71,13 @@
       <?php /////////////// FIRST SIDEBAR ?>
       <?php if ($page['sidebar_first']): ?>
         <div id="sidebar-first" class="sidebar span<?php print $sidebar_span.$classes_sidebar; ?>">
-          <?php print render($page['sidebar_first']); ?>
+          <div class="branding">
+            <h2 id="logo">Black Coral Dive</h2>
+          </div>
+
+          <div id="main-nav-wrapper">
+            <?php print render($page['sidebar_first']); ?>
+          </div>
         </div>
       <?php endif; ?>
 

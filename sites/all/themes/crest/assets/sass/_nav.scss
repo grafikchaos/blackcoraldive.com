@@ -1,57 +1,68 @@
 // Nav
 // ----------------
 
-// Management Block
-// ----------------
+.menu {
 
-#block-system-management{
-	.menu{
-		.active-trail .active-trail{
-			a.active-trail{
-				background-color: transparent;
-				color: $grayDark;
-				text-shadow: 0 1px 0 #fff;
-			}
-			a.active{
-				background-color: $linkColor;
-				color: $white;
-				text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-			}
-		}
-		//background-color:#fff;
-		.menu .menu{
-			a{
-				@include border-radius(0);
-				background-color:#fff;
-				padding-left:30px;
-			}
-			li.first > a{
-				//padding-top:12px;
-				border-top-width: 0;
-				@include border-radius(2px 2px 0 0);
-			}
-			li.last > a{
-				//padding-bottom:12px;
-				border-bottom-width: 0;
-				@include border-radius(0 0 2px 2px);
-			}
-			ul.menu li a{
-				//padding: 4px 60px;
-				padding-left:50px;
-				border-top-width: 0;
-				border-bottom-width: 0;
-			}
-		}
-	}
-	.nav-list .nav-list{
-		padding:0;
-	}
-	.expanded .expanded .expanded{
-	}
+  .nav-list .nav-list li a {
+    padding: 3px 20px;
+    display: block;
+    width: 100%;
+  }
+
+  // Management Block
+  // ----------------
+  #block-system-management & {
+    .active-trail .active-trail {
+      a.active-trail {
+        background-color: transparent;
+        color: $grayDark;
+        text-shadow: 0 1px 0 #fff;
+      }
+
+      a.active{
+        background-color: $linkColor;
+        color: $white;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+      }
+    }
+    //background-color:#fff;
+    .menu .menu {
+      a {
+        @include border-radius(0);
+        background-color:#fff;
+        padding-left:30px;
+      }
+      li.first > a {
+        //padding-top:12px;
+        border-top-width: 0;
+        @include border-radius(2px 2px 0 0);
+      }
+      li.last > a {
+        //padding-bottom:12px;
+        border-bottom-width: 0;
+        @include border-radius(0 0 2px 2px);
+      }
+      ul.menu li a {
+        //padding: 4px 60px;
+        padding-left:50px;
+        border-top-width: 0;
+        border-bottom-width: 0;
+      }
+    }
+
+    .nav-list .nav-list {
+      padding:0;
+    }
+
+    .expanded .expanded .expanded {
+    }
+  }
 }
 
+
+
 // Hide admin link when in the admin section
-.page-admin #block-system-management .content > .menu > li.first > a{
+.page-admin #block-system-management .content > .menu > li.first > a {
 	margin-left: -15px;
   margin-right: -15px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -63,15 +74,15 @@
   padding: 3px 15px;
   text-transform: uppercase;
   background-color: transparent;
-  i{
+  i {
   	display:none;
   }
 }
 
 .pagination{
-  .item-list ul li{
-    margin:0;
-    padding:0;
+  .item-list ul li {
+    margin: 0;
+    padding: 0;
   }
 }
 

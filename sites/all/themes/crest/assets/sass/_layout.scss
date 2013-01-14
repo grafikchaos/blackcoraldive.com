@@ -1,10 +1,27 @@
+// VARIABLES -------------------------------------------------------------------
+$content-bg-color: whiteSmoke;
+
+
+// PLACEHOLDERS ----------------------------------------------------------------
+%content-boxes {
+  background: $content-bg-color;
+  padding: 2em;
+  @include border-radius($radius: 6px);
+}
+
+
 // Layout
 // ----------------
 
+.html, body {
+  position: relative;
+  height: auto;
+}
+
 body{
-  background: #DCDCDC;
-  padding-top:30px;
-  padding-bottom:30px;
+  background: url(../images/backgrounds/low_contrast_linen.png);
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 #page-wrapper{
@@ -16,30 +33,44 @@ body{
 
 #main-wrapper{
 	padding: 30px 0;
+
+  #sidebar-first {
+    @extend %content-boxes;
+
+    // position: fixed;
+    // top: 60px;
+    // left: 60px;
+  }
+
+  #content-wrapper {
+    @extend %content-boxes;
+  }
+
 }
 
 #copyright{
-	color:$grayLight;
-	padding-top:10px;
-	font-size:11px;
+	color: $grayLight;
+	padding-top: 10px;
+	font-size: 11px;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
-	line-height:16px;
-}
+	line-height: 16px;
 
-#copyright a{
-  background: url('../img/bs-ashenrayne.png') no-repeat left center;
-  padding-left:20px;
-	line-height:16px;
-	display: inline-block;
-	color: $grayLighter;
-}
+  a {
+    background: url('../img/bs-ashenrayne.png') no-repeat left center;
+    padding-left: 20px;
+    line-height: 16px;
+    display: inline-block;
+    color: $grayLighter;
 
-#copyright a:hover{
-	color:#FC9829;
-	span{
-		color:#F1460A;
-	}
-	text-decoration: none;
+    &:hover {
+      color: #FC9829;
+      text-decoration: none;
+
+      span {
+        color: #F1460A;
+      }
+    }
+  }
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -49,7 +80,7 @@ body{
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 	body{
-		padding:0;
+		padding: 0;
 	}
 }
 

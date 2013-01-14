@@ -19,21 +19,22 @@ stylesheets[all][] = assets/sass/_modals.scss
 stylesheets[all][] = assets/sass/_entity.scss
 stylesheets[all][] = assets/sass/_misc.scss
 stylesheets[all][] = assets/sass/_typography.scss
-
+stylesheets[all][] = assets/sass/_branding.scss
 
 ; Scripts
 scripts[] = assets/js/script.js
+scripts[] = assets/js/global.js
 
 ; Settings
 settings[shortcut_module_link] = 1
 
 ; Regions
-regions[header] = Header
-regions[help] = Help
-regions[content] = Content
-regions[sidebar_first] = Left sidebar
+regions[header]         = Header
+regions[help]           = Help
+regions[content]        = Content
+regions[sidebar_first]  = Left sidebar
 regions[sidebar_second] = Right sidebar
-regions[footer] = Footer
+regions[footer]         = Footer
 
 ; Ambit
 ambit[images] = assets/img

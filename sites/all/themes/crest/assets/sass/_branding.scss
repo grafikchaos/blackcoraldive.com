@@ -1,0 +1,25 @@
+// image replacement
+%ir {
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
+}
+
+#logo {
+  @extend %ir;
+
+  background: url(/sites/blackcoraldive.com/files/images/logo.png) no-repeat left top;
+  width: 240px;
+  height: 143px;
+  margin: 0 0 20px;
+}
+
+.hero-unit {
+  padding: 30px;
+
+  p {
+    margin: 1em 0;
+  }
+}
