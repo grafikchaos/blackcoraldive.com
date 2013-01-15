@@ -18,10 +18,16 @@ require 'ash/drupal_shared_hosting'
 set :repository, "git@github.com:grafikchaos/blackcoraldive.com.git"
 set :scm, "git"
 
-set :deploy_via,        :copy
+set :deploy_via,        :copy       # Copies repo to local folder on your machine and then copies it up via SFTP
 set :copy_strategy,     :checkout
-set :copy_cache,        true
-set :copy_compression,  :bz2
+set :copy_cache,        true        # faster copy strategy
+set :copy_compression,  :bz2        # compresses the directory befor copying it up
+
+
+# --------------------------------------------
+# Drush executable
+# --------------------------------------------
+set :drush_bin, "~/drush/drush"
 
 # --------------------------------------------
 # Database/Backup Variables
