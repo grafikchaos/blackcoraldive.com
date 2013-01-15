@@ -57,3 +57,4 @@ $sites["www.blackcoraldive.com"]                        = "blackcoraldive.com";
 $sites["bcd.dev"]                                       = "blackcoraldive.com";
 $sites['blackcoraldive.dev']                            = 'blackcoraldive.com';
 $sites['development.grafikchaos.com/blackcoraldive']    = 'blackcoraldive.com';
+$sites['development.grafikchaos.com']                   = 'blackcoraldive.com';

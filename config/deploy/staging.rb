@@ -7,6 +7,8 @@
 # --------------------------------------------
 # Variables
 # --------------------------------------------
+set :public_site, "/home2/#{user}/www/development/blackcoraldive"
+
 # SSH user
 set :user, "grafikch"
 
@@ -38,3 +40,23 @@ set :deploy_to, "/home2/#{user}/code/#{application}/#{stage}"
 set :multisites, {
   "#{application}" => "#{application}"
 }
+
+# --------------------------------------------
+# Callbacks - Set Before/After Precedence
+# --------------------------------------------
+# before "deploy:update_code", "backup"
+after "deploy:cleanup", "deploy:copy_to_public"
+
+
+# --------------------------------------------
+# Capistrano deploy methods (overridden)
+# --------------------------------------------
+namespace :deploy do
+  desc <<-DESC
+    Copy the current release of the application to it's public directory
+    due to an issue with symlinks
+  DESC
+  task :copy_to_public, :roles => :web, :except => { :no_release => true} do
+    run "cp -r #{latest_release} #{public_site}"
+  end
+end
