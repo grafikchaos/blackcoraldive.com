@@ -57,6 +57,8 @@ namespace :deploy do
     due to an issue with symlinks
   DESC
   task :copy_to_public, :roles => :web, :except => { :no_release => true} do
-    run "cp -r #{latest_release} #{public_site}"
+    run "cp -rf #{latest_release} #{public_site}"
+    run "ln -nfs #{shared_path}/#{application}/files files"
+    run "cp -rf #{shared_path}/#{application}/settings.#{stage}.php settings.php"
   end
 end
