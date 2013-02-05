@@ -20,7 +20,7 @@ $content-bg-color: whiteSmoke;
 }
 
 body {
-  background: #e8e8e8 url(../images/backgrounds/coral_tile.png);
+  background: #e8e8e8 image-url('backgrounds/coral_tile.png');
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -134,7 +134,7 @@ body {
     h5, h6 {
       font-size: 1em;
       font-weight: bolder;
-      font-style: italic;
+      font-style: italic
     }
   }
 }
