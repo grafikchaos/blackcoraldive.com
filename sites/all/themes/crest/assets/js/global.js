@@ -9,6 +9,6 @@ jQuery(document).ready(function(){
    *
    * @see  http://twitter.github.com/bootstrap/javascript.html#affix
    */
-  // $("#sidebar-first").affix();
+  $("#sidebar-first").affix();
 
 });

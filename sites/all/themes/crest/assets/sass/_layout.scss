@@ -20,7 +20,7 @@ $content-bg-color: whiteSmoke;
 }
 
 body {
-  background: transparent url(../images/backgrounds/coral_tile.png);
+  background: #e8e8e8 url(../images/backgrounds/coral_tile.png);
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -40,7 +40,7 @@ body {
 
     // position: fixed;
     // top: 60px;
-    // left: 60px;
+    // left: 45px;
   }
 
   #content-wrapper {
@@ -75,16 +75,66 @@ body {
 }
 
 /* Portrait tablet to landscape and desktop */
+@media (min-width: 980px) {
+  // #affix-wrapper .affix {
+  //   width: 23.057%;
+  // }
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
+  #affix-wrapper .affix {
+    position: static;
+    width: auto;
+    top: 0;
+    margin-bottom: 15px;
+  }
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-	body{
+	body {
 		padding: 0;
 	}
+  #affix-wrapper .affix {
+    position: static;
+    width: auto;
+    top: 0;
+    margin-bottom: 15px;
+  }
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+  #affix-wrapper .affix {
+    position: static;
+    width: auto;
+    top: 0;
+    margin-bottom: 15px;
+  }
+
+  #content-wrapper {
+    margin-top: 15px;
+
+    h1 {
+      font-size: 3.5em;
+    }
+
+    h2 {
+      font-size: 3em;
+    }
+
+    h3 {
+      font-size: 2.5em;
+    }
+
+    h4 {
+      font-size: 1.5em;
+    }
+
+    h5, h6 {
+      font-size: 1em;
+      font-weight: bolder;
+      font-style: italic;
+    }
+  }
 }

@@ -70,13 +70,18 @@
 
       <?php /////////////// FIRST SIDEBAR ?>
       <?php if ($page['sidebar_first']): ?>
-        <div id="sidebar-first" class="sidebar span<?php print $sidebar_span.$classes_sidebar; ?>">
-          <div class="branding">
-            <h2 id="logo">Black Coral Dive</h2>
-          </div>
+        <div id="affix-wrapper" class="span<?php print $sidebar_span.$classes_sidebar; ?>">
+          <div id="sidebar-first" class="sidebar" data-spy="affix" data-offset-top="60">
+            <div class="branding">
+              <h2 id="logo">
+                Black Coral Dive
+                <img src="/sites/blackcoraldive.com/files/images/logo.png" />
+              </h2>
+            </div>
 
-          <div id="main-nav-wrapper">
-            <?php print render($page['sidebar_first']); ?>
+            <div id="main-nav-wrapper">
+              <?php print render($page['sidebar_first']); ?>
+            </div>
           </div>
         </div>
       <?php endif; ?>
