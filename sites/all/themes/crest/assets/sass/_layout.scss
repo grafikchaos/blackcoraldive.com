@@ -7,6 +7,7 @@ $content-bg-color: whiteSmoke;
   background: $content-bg-color;
   padding: 2em;
   @include border-radius($radius: 6px);
+  @include box-shadow(#ccc 0 0 12px);
 }
 
 
@@ -19,7 +20,7 @@ $content-bg-color: whiteSmoke;
 }
 
 body {
-  background: url(../images/backgrounds/low_contrast_linen.png);
+  background: transparent url(../images/backgrounds/coral_tile.png);
   padding-top: 30px;
   padding-bottom: 30px;
 }
