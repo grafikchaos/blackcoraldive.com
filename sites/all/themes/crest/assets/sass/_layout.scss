@@ -43,6 +43,19 @@ body {
     // left: 45px;
   }
 
+  #sidebar-second {
+    @extend %content-boxes;
+
+    ul {
+      padding: 0;
+      margin-left: 0;
+
+      li {
+        list-style: none;
+      }
+    }
+  }
+
   #content-wrapper {
     @extend %content-boxes;
   }
