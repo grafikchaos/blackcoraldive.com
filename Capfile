@@ -29,6 +29,16 @@ set :copy_compression,  :bz2        # compresses the directory befor copying it 
 # --------------------------------------------
 set :drush_bin, "~/drush/drush"
 
+
+# --------------------------------------------
+# Compass/Sass
+# --------------------------------------------
+set :compass_bin, "compass" # we're trusting that compass is in the User's path
+set(:compass_env) { "#{stage}" }
+#  One of: nested, expanded, compact, compressed
+set :compass_output, "compressed"
+
+
 # --------------------------------------------
 # Database/Backup Variables
 # --------------------------------------------
@@ -78,5 +88,14 @@ namespace :drupal do
   end
 end
 
+# --------------------------------------------
+# Compass/Sass compiling
+# --------------------------------------------
+namespace :compass do
+  desc 'Compile minified version of CSS assets using Compass gem'
+  task :compile, :roles => :web, :except => { :no_release => true } do
+    system "#{compass_bin} compile --output-style #{compass_output} --environment #{compass_env} ./sites/blackcoraldive.com/files/ambit"
+  end
+end
 
 
