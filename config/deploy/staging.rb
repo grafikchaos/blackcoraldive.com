@@ -7,24 +7,10 @@
 # --------------------------------------------
 # Variables
 # --------------------------------------------
-set :public_site, "/home2/#{user}/www/development/blackcoraldive"
-
-# SSH user
-set :user, "grafikch"
+# set :public_site, "/home2/#{user}/www/development/blackcoraldive"
 
 # repository branch
 set :branch, "master"
-
-# --------------------------------------------
-# Server Variables/Defaults
-#
-#    Alternative Server(s) Configuration:
-#      role :web, "domain.com"  # can also use IP-address or host's servername
-#      role :db, "domain.com"   # can also use IP-address or host's servername
-# --------------------------------------------
-server "grafikchaos.com", :web, :db, :primary => true
-set :deploy_to, "/home2/#{user}/code/#{application}/#{stage}"
-
 
 # --------------------------------------------
 # Multisites
@@ -45,7 +31,7 @@ set :multisites, {
 # Callbacks - Set Before/After Precedence
 # --------------------------------------------
 # before "deploy:update_code", "backup"
-after "deploy:cleanup", "deploy:copy_to_public"
+# after "deploy:cleanup", "deploy:copy_to_public"
 
 
 # --------------------------------------------

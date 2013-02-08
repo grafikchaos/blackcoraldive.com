@@ -31,16 +31,17 @@ set(:deploy_to) { "~/code/#{application}/#{stage}" }
 set :repository, "git@github.com:grafikchaos/blackcoraldive.com.git"
 set :scm, "git"
 
+# set :copy_strategy,     :export
 set :deploy_via,        :copy       # Copies repo to local folder on your machine and then copies it up via SFTP
 set :copy_strategy,     :checkout
 set :copy_cache,        true        # faster copy strategy
-set :copy_compression,  :bz2        # compresses the directory befor copying it up
+set :copy_compression,  :gzip        # compresses the directory befor copying it up
 
 
 # --------------------------------------------
 # Drush executable
 # --------------------------------------------
-set :drush_bin, "~/drush/drush"
+set :drush_bin, "~/drush/drush.php"
 
 
 # --------------------------------------------
@@ -111,4 +112,80 @@ namespace :compass do
   end
 end
 
+
+# --------------------------------------------
+# Overloaded Methods
+# --------------------------------------------
+namespace :deploy do
+  namespace :web do
+    desc "Disable the application and show a message screen"
+    task :disable, :roles => :web do
+      logger.important "UNABLE TO run deploy:web:disable because `drush` cannot be ran on this server"
+      # multisites.each_pair do |folder, url|
+      #   run "#{drush_bin} -l #{url} -r #{latest_release} vset --yes site_offline 1"
+      # end
+    end
+
+    desc "Enable the application and remove the message screen"
+    task :enable, :roles => :web do
+      logger.important "UNABLE TO run deploy:web:enable because `drush` cannot be ran on this server"
+      # multisites.each_pair do |folder, url|
+      #   run "#{drush_bin} -l #{url} -r #{latest_release} vdel --yes site_offline"
+      # end
+    end
+  end
+end
+
+namespace :backup do
+  desc "Perform a backup of database files"
+  task :db, :roles => :db do
+    if previous_release
+      puts "Backing up the database now and putting dump file in the previous release directory"
+      logger.important "UNABLE TO run backup:db because `drush` cannot be ran on this server"
+
+      # multisites.each_pair do |folder, url|
+      #   # define the filename (include the current_path so the dump file will be within the directory)
+      #   filename = "#{current_path}/#{folder}_dump-#{Time.now.to_s.gsub(/ /, "_")}.sql.gz"
+      #   # dump the database for the proper environment
+      #   run "#{drush_bin} -l #{url} -r #{current_path} sql-dump | gzip -c --best > #{filename}"
+      # end
+    else
+      logger.important "no previous release to backup; backup of database skipped"
+    end
+  end
+end
+
+# --------------------------------------------
+# Drupal-specific methods
+# --------------------------------------------
+namespace :drupal do
+  desc "Symlink shared directories"
+  task :symlink, :roles => :web, :except => { :no_release => true } do
+    multisites.each_pair do |folder, url|
+      # symlinks the appropriate environment's settings.php file
+      symlink_config_file
+
+      run "ln -nfs #{shared_path}/#{url}/files #{latest_release}/sites/#{url}/files"
+
+      logger.important "UNABLE TO update the file_directory_path in the database because `drush` cannot be ran on this server"
+      # run "#{drush_bin} -l #{url} -r #{current_path} vset --yes file_directory_path sites/#{url}/files"
+    end
+  end
+
+  desc "Replace local database paths with remote paths"
+  task :updatedb, :roles => :web, :except => { :no_release => true } do
+    logger.important "UNABLE TO run drupal:updatedb because `drush` cannot be ran on this server"
+    # multisites.each_pair do |folder, url|
+    #  run "#{drush_bin} -l #{url} -r #{current_path} sqlq \"UPDATE {files} SET filepath = REPLACE(filepath,'sites/#{folder}/files','sites/#{url}/files');\""
+    # end
+  end
+
+  desc "Clear all Drupal cache"
+  task :clearcache, :roles => :web, :except => { :no_release => true } do
+    logger.important "UNABLE TO run drupal:clearcache because `drush` cannot be ran on this server"
+    # multisites.each_pair do |folder, url|
+    #   run "#{drush_bin} -l #{url} -r #{current_path} cache-clear all"
+    # end
+  end
+end
 
