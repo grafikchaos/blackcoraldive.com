@@ -12,6 +12,19 @@ set :application, "blackcoraldive.com"
 # --------------------------------------------
 require 'ash/drupal_shared_hosting'
 
+
+# --------------------------------------------
+# Variables
+# --------------------------------------------
+# SSH user
+set :user, "d2a38525"
+
+# --------------------------------------------
+# Server Variables/Defaults
+# --------------------------------------------
+server "blackcoraldive.com", :web, :db, :primary => true
+set(:deploy_to) { "~/code/#{application}/#{stage}" }
+
 # --------------------------------------------
 # Git/SVN Variables
 # --------------------------------------------

@@ -8,7 +8,8 @@
 # Variables
 # --------------------------------------------
 # SSH user
-set :user, "grafikch"
+# set :user, "grafikch"
+# set :user, "d2a38525"
 
 # repository branch
 set :branch, "master"
@@ -20,6 +21,5 @@ set :branch, "master"
 #      role :web, "domain.com"  # can also use IP-address or host's servername
 #      role :db, "domain.com"   # can also use IP-address or host's servername
 # --------------------------------------------
-server "grafikchaos.com", :web, :db, :primary => true
-set :deploy_to, "/home2/#{user}/code/#{application}/#{stage}"
-
+# server "grafikchaos.com", :web, :db, :primary => true
+# set :deploy_to, "/home2/#{user}/code/#{application}/#{stage}"
