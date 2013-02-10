@@ -71,11 +71,13 @@
       <?php /////////////// FIRST SIDEBAR ?>
       <?php if ($page['sidebar_first']): ?>
         <div id="affix-wrapper" class="span<?php print $sidebar_span.$classes_sidebar; ?>">
-          <div id="sidebar-first" class="sidebar" data-spy="affix" data-offset-top="60">
+          <div id="sidebar-first" class="sidebar">
             <div class="branding">
               <h2 id="logo">
-                Black Coral Dive
-                <img src="/sites/blackcoraldive.com/files/images/logo.png" />
+                <a href="/" title="Home">
+                  Black Coral Dive
+                  <img src="/sites/blackcoraldive.com/files/images/logo.png" />
+                </a>
               </h2>
             </div>
 

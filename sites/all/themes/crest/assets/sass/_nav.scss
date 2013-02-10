@@ -1,13 +1,73 @@
+// Placeholders
+// ----------------
+
+%active-trail-links  {
+  .active-trail a.active-trail {
+    background-color: transparent;
+    color: $linkColor;
+    text-shadow: 0 1px 0 #fff;
+
+    &.active {
+      background-color: $linkColor;
+      color: $white;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+
+
 // Nav
 // ----------------
 
-.menu {
+#logo a {
+  text-indent: -999em;
 
-  .nav-list .nav-list li a {
-    padding: 3px 20px;
-    display: block;
-    width: 100%;
+  &:hover,
+  &:active {
+    text-decoration: none;
+    border: none;
   }
+}
+
+
+
+// 1st level
+.nav-list {
+  @extend %active-trail-links;
+
+  // 2nd level
+  .nav-list {
+    @extend %active-trail-links;
+
+    li > a {
+      padding-left: 30px;
+    }
+
+    li > a,
+    .nav-header {
+      margin-left: -30px;
+      margin-right: -30px;
+    }
+
+    // 3rd level
+    .nav-list {
+      @extend %active-trail-links;
+
+      li > a {
+        padding-left: 45px;
+      }
+
+      li > a,
+      .nav-header {
+        margin-left: -45px;
+        margin-right: -45px;
+      }
+    }
+  }
+}
+
+.menu {
 
   // Management Block
   // ----------------
@@ -58,8 +118,6 @@
     }
   }
 }
-
-
 
 // Hide admin link when in the admin section
 .page-admin #block-system-management .content > .menu > li.first > a {
