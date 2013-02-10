@@ -1,37 +1,10 @@
 # Ignore configuration files that may contain sensitive information.
-sites/*/settings.php
+sites/*/settings*.php
 
-# Normal OS hidden files & IDE
-.DS_Store
-.svn
-._*
-*~
-*.swp
-.project
-.projectOptions
-.settings
-.buildpath
-nbproject
-*.sublime-workspace
-*.sublime-project
-.htaccess
+# Ignore paths that contain user-generated content.
+sites/*/files
+sites/*/private
 
-# App file uploads
-public/uploads/
-
-# Files styles
-sites/*/files/styles
-sites/*/files/styles
-
-# Vagrant
-.vagrant
-
-# SCSS
+# SASS 
 .sass-cache
-sites/all/themes/*/assets/css/application.css
-sites/*/files/feeds/
-sites/*/files/feeds/
 
-sites/*/files/js/
-sites/*/files/css/
-sites/*/files/xmlsitemap/
