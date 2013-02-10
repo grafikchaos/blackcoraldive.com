@@ -24,6 +24,9 @@ set :user, "d2a38525"
 # --------------------------------------------
 server "blackcoraldive.com", :web, :db, :primary => true
 set(:deploy_to) { "~/code/#{application}/#{stage}" }
+set :public_site, "~/html/"
+
+
 
 # --------------------------------------------
 # Git/SVN Variables
@@ -69,6 +72,7 @@ set(:backup_exclude) { [ "var/", "tmp/" ] }
 # Callbacks - Set Before/After Precedence
 # --------------------------------------------
 # before "deploy:update_code", "backup"
+# after "deploy:cleanup", "deploy:copy_to_public"
 
 # --------------------------------------------
 # Drupal-specific methods (overridden)
@@ -99,6 +103,22 @@ namespace :drupal do
           logger.important "Failed to symlink the settings.php file in #{drupal_app_site_dir} because an unknown pattern was used"
       end
     end
+  end
+end
+
+# --------------------------------------------
+# Capistrano deploy methods (overridden)
+# --------------------------------------------
+namespace :deploy do
+  desc <<-DESC
+    Copy the current release of the application to it's public directory
+    due to an issue with symlinks
+  DESC
+  task :copy_to_public, :roles => :web, :except => { :no_release => true} do
+    run "cp -rf #{latest_release}/* #{public_site}"
+    run "cp -rf #{latest_release}/.htacces #{public_site}"
+    run "ln -nfs #{shared_path}/#{application}/files files"
+    run "cp -rf #{shared_path}/#{application}/settings.#{stage}.php settings.php"
   end
 end
 
