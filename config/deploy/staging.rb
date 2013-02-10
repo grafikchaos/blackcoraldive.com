@@ -7,6 +7,7 @@
 # --------------------------------------------
 # Variables
 # --------------------------------------------
+set :public_site, "~/html/staging/"
 
 # repository branch
 set :branch, "master"
