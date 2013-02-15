@@ -133,14 +133,15 @@ namespace :compass do
 
   desc 'Uploads compiled stylesheets to their matching watched directories'
   task :upload_stylesheets, :roles => :web, :except => { :no_release => true } do
-    watched_dirs  = fetch(:watched_dirs, nil)
+    watched_dirs          = fetch(:watched_dirs, nil)
+    stylesheets_dir_name  = fetch(:stylesheets_dir_name, 'stylesheets')
 
     if !watched_dirs.nil?
       if watched_dirs.is_a? String
         logger.debug "Uploading compiled stylesheets for #{watched_dirs}"
-        logger.debug "trying to upload stylesheets from ./#{watched_dirs}/stylesheets -> #{latest_release}/#{watched_dirs}/stylesheets"
+        logger.debug "trying to upload stylesheets from ./#{watched_dirs}/#{stylesheets_dir_name} -> #{latest_release}/#{watched_dirs}/#{stylesheets_dir_name}"
 
-        upload_command = "scp -r ./#{watched_dirs}/stylesheets/*.css #{user}@#{application}:#{latest_release}/#{watched_dirs}/stylesheets/"
+        upload_command = "scp -r ./#{watched_dirs}/#{stylesheets_dir_name}/*.css #{user}@#{application}:#{latest_release}/#{watched_dirs}/#{stylesheets_dir_name}/"
 
         logger.info "running SCP command:"
         logger.debug upload_command
@@ -150,9 +151,9 @@ namespace :compass do
       elsif watched_dirs.is_a? Array
         logger.debug "Uploading compiled stylesheets for #{watched_dirs.join(', ')}"
         watched_dirs.each do |dir|
-          logger.debug "trying to upload stylesheets from ./#{dir}/stylesheets/ -> #{latest_release}/#{dir}/stylesheets/"
+          logger.debug "trying to upload stylesheets from ./#{dir}/#{stylesheets_dir_name}/ -> #{latest_release}/#{dir}/#{stylesheets_dir_name}/"
 
-          upload_command = "scp -r ./#{dir}/stylesheets/*.css #{user}@#{application}:#{latest_release}/#{dir}/stylesheets/"
+          upload_command = "scp -r ./#{dir}/#{stylesheets_dir_name}/*.css #{user}@#{application}:#{latest_release}/#{dir}/#{stylesheets_dir_name}/"
 
           logger.info "running SCP command:"
           logger.debug upload_command
@@ -169,12 +170,12 @@ namespace :compass do
   desc 'Compile minified version of CSS assets using Compass gem'
   task :compile, :roles => :web, :except => { :no_release => true } do
 
-    compass_bin_local = find_compass_bin_path
-    watched_dirs      = fetch(:watched_dirs, nil)
+    compass_bin_local     = find_compass_bin_path
+    watched_dirs          = fetch(:watched_dirs, nil)
 
-    compass_bin       = fetch(:compass_bin, compass_bin_local)
-    compass_env       = fetch(:compass_env, "production")
-    compass_output    = fetch(:compass_output, 'compressed') # nested, expanded, compact, compressed
+    compass_bin           = fetch(:compass_bin, compass_bin_local)
+    compass_env           = fetch(:compass_env, "production")
+    compass_output        = fetch(:compass_output, 'compressed') # nested, expanded, compact, compressed
 
     if !compass_bin.nil?
       if !watched_dirs.nil?
